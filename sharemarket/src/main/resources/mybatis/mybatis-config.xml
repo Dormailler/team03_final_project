@@ -4,9 +4,8 @@
 <configuration>
 <typeAliases>
 
-  <typeAlias type="login.MemberDTO" alias="userdto"/>
-  <typeAlias type="login.MemberDTO" alias="memberdto"/>
-  <typeAlias type="message.MessageTO" alias="messageto"/>
+  	<typeAlias type="login.MemberDTO" alias="userdto"/>
+  	<typeAlias type="login.MemberDTO" alias="memberdto"/>
 	<typeAlias type="shareboard.ShareBoardDTO" alias="shareboarddto" />
 	<typeAlias type="dto.CommBoardDTO" alias="commBoardDto"/>
 	<typeAlias type="dto.freeBoardDTO" alias="freedto"/>
