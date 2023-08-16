@@ -5,7 +5,7 @@
 
 
 <typeAliases>
-	<typeAlias type="shareboard.ShareBoardDTO" alias="shareboarddto" />
+	
 	
 </typeAliases>
 
