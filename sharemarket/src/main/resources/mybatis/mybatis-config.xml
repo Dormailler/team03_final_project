@@ -5,7 +5,7 @@
 
 
 <typeAliases>
-	
+	<typeAlias type="dto.freeBoardDTO" alias="freedto"/>
 	
 </typeAliases>
 
