@@ -36,7 +36,7 @@ $(document).ready(function() {
       <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
       <li><a href="#" class="nav-link px-2">빌려주세요</a></li>
       <li><a href="#" class="nav-link px-2">빌려줍니다</a></li>
-      <li><a href="#" class="nav-link px-2">무료나눔</a></li>
+      <li><a href="/free" class="nav-link px-2">무료나눔</a></li>
       <li><a href="#" class="nav-link px-2">커뮤니티</a></li>
       <li><a href="#" class="nav-link px-2">문의사항</a></li>
     </ul>
