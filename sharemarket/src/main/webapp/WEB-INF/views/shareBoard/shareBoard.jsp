@@ -56,6 +56,10 @@
 					</c:forEach>
 				</table>
 			</div>
+			
+			<div id="pagenation">
+			
+			</div>
 			</main>
 		</div>
 	
