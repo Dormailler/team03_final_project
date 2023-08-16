@@ -4,5 +4,6 @@
 <configuration>
 <typeAliases>
 	<typeAlias type="dto.CommBoardDTO" alias="commBoardDto"/>
+	<typeAlias type="dto.freeBoardDTO" alias="freedto"/>
 </typeAliases>
 </configuration>

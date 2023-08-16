@@ -7,8 +7,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
 @SpringBootApplication
+
 @Component
-@ComponentScan(basePackages = {"controller","dto","dao","service"})
+@ComponentScan(basePackages = {"main",controller","dto","dao","service"})
 @MapperScan(basePackages = {"dao"})
 public class SharemarketApplication {
 
