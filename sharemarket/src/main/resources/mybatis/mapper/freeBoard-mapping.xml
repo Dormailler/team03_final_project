@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.freeBoardDAO">
+
+	<select id="freeList" resultType="freedto" parameterType="hashMap">
+		select * from freeBoard where category = #{category} limit ${start},${end};
+	</select>
+	<select id="freeOne" resultType="freedto" parameterType="String">
+		select * from freeBoard where share_id = #{share_id};
+	</select>
+	<select id="getTotalFreeBoard" resultType="int" parameterType="String">
+		select count(*) from freeBoard where category = #{category};
+	</select>
+</mapper>
+
+
+
+
+
+
