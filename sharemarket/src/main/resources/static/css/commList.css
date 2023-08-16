@@ -1,0 +1,99 @@
+@charset "UTF-8";
+
+/* commList.css */
+
+/* Reset some default styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Basic styling for the entire page */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+/* Container */
+#container {
+  padding: 20px;
+}
+
+/* Board section */
+.board {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  background-color: white;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.board h1 {
+  font-size: 24px;
+  padding-bottom: 10px;
+}
+
+/* List styling */
+.list-info {
+  display: inline-block;
+}
+
+.serch-box {
+  display: inline-block;
+  float: right;
+}
+
+.list-header {
+  background-color: #f2f2f2;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+}
+
+.list-header strong {
+  flex: 1;
+}
+
+.list-body {
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+}
+
+.list-body p {
+  flex: 1;
+  padding: 5px;
+}
+
+.list-body .title {
+  flex: 3;
+}
+
+.text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Button styling */
+.form-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-btn:hover {
+  background-color: #0056b3;
+}
+
+.page-box {
+	text-align: center;
+}
