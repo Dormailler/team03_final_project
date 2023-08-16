@@ -3,11 +3,26 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+<script>
+$(document).ready(function() {
+    // 유저 아이콘
+    <%-- 세션에 session_id가 null이 아닌 경우 (로그인된 상태) --%>
+    <c:if test="${session_id != null}">
+        $("#user_profile").show();
+        $("#logout_btn").show();
+    </c:if>
+    <c:if test="${session_id == null}">
+        $("#user_profile").hide();
+        $("#logout_btn").hide();
+    </c:if>
+}
+</script>
     <meta charset="UTF-8">
     <title>Title</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
 <div class="container">
   <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
@@ -27,10 +42,17 @@
     </ul>
 
     <div class="col-md-3 text-end">
-      <button type="button" class="btn btn-outline-primary me-2">로그인</button>
-      <button type="button" class="btn btn-primary">회원가입</button>
-    </div>
-  </header>
+    <c:choose>
+        <c:when test="${empty sessionScope.session_id}">
+            <a href="/login" class="btn btn-outline-primary me-2">로그인</a>
+            <a href="/join" class="btn btn-primary">회원가입</a>
+        </c:when>
+        <c:otherwise>
+            <a href="/message" class="btn btn-outline-primary me-2">메시지</a>
+            <a href="/boardlogout" class="btn btn-outline-primary me-2">로그아웃</a>
+        </c:otherwise>
+    </c:choose>
 </div>
+</header>
 </body>
 </html>
