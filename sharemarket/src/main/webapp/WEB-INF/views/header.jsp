@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 $(document).ready(function() {
     // 유저 아이콘
@@ -15,7 +16,7 @@ $(document).ready(function() {
         $("#user_profile").hide();
         $("#logout_btn").hide();
     </c:if>
-}
+});
 </script>
     <meta charset="UTF-8">
     <title>Title</title>

@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
 
 @SpringBootApplication
 @Component
-@ComponentScan(basePackages = {"main","controller","dto","dao","service","shareboard"})
-@MapperScan(basePackages = {"dao","shareboard"})
+@ComponentScan(basePackages = {"main","controller","dto","dao","service","shareboard", "commBoard"})
+@MapperScan(basePackages = {"dao","shareboard", "commBoard"})
 public class SharemarketApplication {
 
 	public static void main(String[] args) {
