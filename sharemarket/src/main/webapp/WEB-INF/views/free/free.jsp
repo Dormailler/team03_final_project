@@ -1,3 +1,4 @@
+<%@page import="ch.qos.logback.core.recovery.ResilientSyslogOutputStream"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -13,8 +14,30 @@
 $(document).ready(function(){
 	var page = "#page" + "${page}";
 	$(page).css("color","#1B5DDE");
-	var category = "${category}";
+	var category = ".${category}";
+	$(category).addClass("active");
+	$('#write_btn').on('click',function(e){
+		if("${session_id}" == ""){
+			e.preventDefault();
+			alert("로그인 후 이용가능합니다.");
+			return;
+		}
+	});
 	
+	function searchSubmt(){
+		var category = "${category}";
+		var text = $('#search').val();
+		var select = $('#search_select').val();
+		
+		location.href="/free?category=" + category + "&text=" + text + "&select=" + select;
+	}
+	$('#search_btn').on('click',searchSubmt);
+ 	$('#search').on("keydown", function(e) {
+        if (e.key === "Enter") {
+        	searchSubmt();
+        	
+        }
+ 	});
 });
 </script>
 
@@ -22,18 +45,24 @@ $(document).ready(function(){
 <body>
 <%@ include file="../header.jsp" %>
 <h1 class="top">무료나눔</h1>
-<div id="search_wrap">
-	<input type = "text" id="search" placeholder= "검색어를 입력해주세요.">
+<div id="search_wrap" action="/free_search">
+	<select id="search_select">
+		<option value="title">제목</option>
+		<option value="user_id">작성자</option>
+		<option value="location">위치</option>
+	</select>
+	<input type = "text" id="search" placeholder="검색어를 입력해주세요.">
+	<img id="search_btn" src="/img/search.svg" alt="search_btn">
 </div>
 <div id="nav_wrap">
 	<ul id="nav_ul">
-		<a href="free?category=패션" class=""><li class="nav active">패션</li></a>
-		<a href="free?category=뷰티" class=""><li class="nav">뷰티</li></a>
-		<a href="free?category=아동" class=""><li class="nav">아동</li></a>
-		<a href="free?category=생활" class=""><li class="nav">생활</li></a>
-		<a href="free?category=전자" class=""><li class="nav">전자</li></a>
-		<a href="free?category=도서" class=""><li class="nav">도서</li></a>
-		<a href="free?category=취미" class=""><li class="nav">취미</li></a>
+		<li class="fashion"><a href="free?category=fashion" class="">패션</a></li>
+		<li class="beauty"><a href="free?category=beauty" class="">뷰티</a></li>
+		<li class="child"><a href="free?category=child" class="">아동</a></li>
+		<li class="life"><a href="free?category=life" class="">생활</a></li>
+		<li class="electron"><a href="free?category=electron" class="">전자</a></li>
+		<li class="book"><a href="free?category=book" class="">도서</a></li>
+		<li class="hobby"><a href="free?category=hobby" class="">취미</a></li>
 	</ul>
 </div>
 <div id="content_wrap">
@@ -41,7 +70,7 @@ $(document).ready(function(){
 		<tr>
 			<c:forEach items="${freelist}" var="dto" begin="0" end="3">
 				<td>
-					<a href="free/${dto.share_id}"><img referrerpolicy="no-referrer" src="${dto.img}" alt="상품이미지" class="img"></a>
+					<a href="free/${dto.share_id}"><img referrerpolicy="no-referrer" src="/save/${dto.img}" alt="상품이미지" class="img" onerror="this.src='${dto.img}';"></a>
 					<div class="detail_wrap">
 						<h4 class="title"><a href="free/${dto.share_id}">${dto.title}</a></h4>
 	                    <h6><a href="" class="user">${dto.user_id}</a> ${dto.location}</h6>
@@ -53,7 +82,7 @@ $(document).ready(function(){
 		<tr>
 			<c:forEach items="${freelist}" var="dto" begin="4" end="7">
 				<td>
-					<a href="free/${dto.share_id}"><img referrerpolicy="no-referrer" src="${dto.img}" alt="상품이미지" class="img"></a>
+					<a href="free/${dto.share_id}"><img referrerpolicy="no-referrer" src="/save/${dto.img}" alt="상품이미지" class="img" onerror="this.src='${dto.img}';"></a>
 					<div class="detail_wrap">
 						<h4 class="title"><a href="free/${dto.share_id}">${dto.title}</a></h4>
 	                    <h6><a href="" class="user">${dto.user_id}</a> ${dto.location}</h6>
@@ -64,12 +93,13 @@ $(document).ready(function(){
 		</tr>
 	</table>
 </div>
-
+<div id="bottom">
 <div id="page_wrap">
 	
 	<%
 	  
 	  int totalBoard = (Integer)request.getAttribute("totalBoard");
+	  
 	  int totalPage = 0;
 	  if(totalBoard % 8 == 0){
 		  totalPage = totalBoard / 8;
@@ -80,9 +110,11 @@ $(document).ready(function(){
 	
 	  for(int i = 1; i <= totalPage; i++){
 		  %>
-		<span class="page"><a href="free?page=<%=i %>" id="page<%=i%>"> <%=i %>  </a></span>
+		<span class="page"><a href="/free?category=${category}&page=<%=i %>&text=${text}&select=${select}" id="page<%=i%>"> <%=i %>  </a></span>
 	<%  }
 	%>
+</div>
+<div id="write_wrap"><button id="write"><a href="/freew" id="write_btn">글쓰기</a></button></div>
 </div>
 <%@ include file="../footer.jsp" %>
 </body>

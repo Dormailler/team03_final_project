@@ -12,6 +12,23 @@
 	<select id="getTotalFreeBoard" resultType="int" parameterType="String">
 		select count(*) from freeBoard where category = #{category};
 	</select>
+	<select id="getTotalsearchFreeBoard" resultType="int" parameterType="String">
+		select count(*) from freeBoard where category = #{category} and ${select} like concat("%", #{text}, "%");
+	</select>
+	<insert id="registerFreeBoard">
+		INSERT INTO freeBoard (user_id, title, category, location, content, is_shared, img, date)
+		VALUES (#{user_id}, #{title},#{category}, #{location}, #{content}, false, #{img}, now()); 
+	</insert> 
+	<delete id="deleteFreeBoard" parameterType="String">
+		delete from freeBoard where share_id = #{share_id};
+	</delete>
+	<update id="updateFreeBoard">
+		update freeboard set title = #{title}, category = #{category}, location = #{location},content = #{content},
+		img = #{img}, date = now() where share_id = #{share_id};
+	</update> 
+	<select id="searchFreeBoard" parameterType="hashMap">
+		select * from freeBoard where category = #{category} and ${select} like concat("%", #{text}, "%") limit ${start},${end};
+	</select>
 </mapper>
 
 
