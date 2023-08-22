@@ -34,7 +34,7 @@ $(document).ready(function() {
     </div>
 
     <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-      <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
+      <li><a href="/" class="nav-link px-2 link-secondary">Home</a></li>
       <li><a href="#" class="nav-link px-2">빌려주세요</a></li>
       <li><a href="#" class="nav-link px-2">빌려줍니다</a></li>
       <li><a href="/free" class="nav-link px-2">무료나눔</a></li>
@@ -49,7 +49,8 @@ $(document).ready(function() {
             <a href="/join" class="btn btn-primary">회원가입</a>
         </c:when>
         <c:otherwise>
-            <a href="/message" class="btn btn-outline-primary me-2">메시지</a>
+                    <a href="/myinfo" class="btn btn-outline-primary me-2">내 정보</a>
+            <a href="/messagelist" class="btn btn-outline-primary me-2">메시지</a>
             <a href="/boardlogout" class="btn btn-outline-primary me-2">로그아웃</a>
         </c:otherwise>
     </c:choose>

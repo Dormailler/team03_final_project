@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>회원 정보</title>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
     <style>
         .myinfobox {
             margin-left: 250px;
@@ -59,21 +63,25 @@
                 <tr>
                     <td>아이디</td>
                     <td>${dto.user_id}
-                    <input type="hidden" name="user_id" value="${dto.user_id}">
+                    <input type="hidden" class="form-control" name="user_id" value="${dto.user_id}">
                     </td>
                 </tr>
                 <tr>
                     <td>비밀번호</td>
-                    <td><input type="text" name="pw" value="${dto.pw}">
+                    <td><input type="text" class="form-control" name="pw" value="${dto.pw}">
                     </td>
                 <tr>
                     <td>이름</td>
-                    <td><input type="text" name="name" value="${dto.name}"></td>
+                    <td><input type="text" class="form-control" name="name" value="${dto.name}"></td>
                 </tr>
+                <tr>
+                        <td>별명</td>
+                        <td><input type="text" class="form-control" name="nick" value="${dto.nick}"></td>
+                    </tr>
                 <tr>
     <td>주소</td>
     <td>
-        <input type="text" id="address" name="address" value="${dto.address}">
+        <input type="text" id="address" class="form-control" name="address" value="${dto.address}">
     </td>
 </tr>
 <tr>
@@ -84,11 +92,11 @@
 </tr>
                 <tr>
                     <td>휴대폰번호</td>
-                    <td><input type="text" name="phone" value="${dto.phone}"></td>
+                    <td><input type="text" name="phone" class="form-control" value="${dto.phone}"></td>
                 </tr>
                 <tr>
                     <td>이메일</td>
-                    <td><input type="text" name="email" value="${dto.email}"></td>
+                    <td><input type="text" name="email" class="form-control" value="${dto.email}"></td>
                 </tr>
                 <tr>
                     <td>프로필 사진</td>
