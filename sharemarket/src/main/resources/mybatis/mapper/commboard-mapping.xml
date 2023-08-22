@@ -9,9 +9,37 @@
 	values (#{title}, #{content}, #{writer})
 </insert>
 	
+<!-- 검색 기능 -->
+<sql id="search">
+	<trim prefix="where ">
+		<choose>
+			<!-- 검색 옵션이 전체 검색인 경우 -->
+			<when test='option == "all"'>
+				title like concat('%', #{keyword}, '%') or
+				content like concat('%', #{keyword}, '%') or
+				writer like concat('%', #{keyword}, '%')
+			</when>
+			<!-- 검색 옵션에 따라 출력 -->
+			<when test='option != null'>
+				${option} like concat('%', #{keyword}, '%')
+			</when>
+			<!-- 그 외는 전체 출력 -->
+			<otherwise>
+				<![CDATA[ no > 0]]>
+			</otherwise>
+		</choose>
+	</trim>
+</sql>
+
 <!-- 게시글 조회 -->
 <select id="commList" resultType="CommBoardDTO">
-	select * from communityBoard order by no desc;
+	select * from (select @rownum := @rownum + 1 as rownum, c.*
+	    from (select @rownum := 0) as init, communityBoard c
+	    <include refid="search"></include>
+	    order by no desc) as pageboard
+	<![CDATA[
+	where rownum > (#{page}-1) * #{amount} and rownum <= #{page} * #{amount};
+	]]>
 </select>
 
 <!-- 게시글 보기 -->
@@ -28,4 +56,24 @@
 <delete id="commRemove">
 	delete from communityBoard where no=#{no};
 </delete>
+
+<!-- 게시글 개수 -->
+<select id="getTotal" resultType="int">
+	select count(*) from communityBoard
+	<include refid="search"></include>
+</select>
+
+<!-- 이전 게시글 보기 -->
+<select id="prevBoard" resultType="CommBoardDTO">
+	<![CDATA[
+		select no, title from communityBoard where no < #{no} order by no desc limit 1;
+		]]>
+</select>
+
+<!-- 다음 게시글 보기 -->
+<select id="nextBoard" resultType="CommBoardDTO">
+	<![CDATA[
+		select no, title from communityBoard where no > #{no} order by no limit 1;
+		]]>
+</select>
 </mapper>

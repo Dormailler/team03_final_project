@@ -2,7 +2,13 @@ package dto;
 
 public class freeBoardDTO {
 	int share_id;
-	String user_id,title,category,location,content;
+	String user_id,name,title,category,location,content;
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	boolean is_shared;
 	String img,date;
 	int comment;
