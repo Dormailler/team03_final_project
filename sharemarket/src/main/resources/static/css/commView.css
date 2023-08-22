@@ -1,0 +1,171 @@
+@charset "UTF-8";
+
+/* commView.css */
+
+/* Reset some default styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Basic styling for the entire page */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+/* Container */
+#container {
+  padding: 20px;
+  margin: 0 200px;
+}
+
+.board h1 {
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+/* Border content */
+.border-content {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  background-color: white;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.view-box ul {
+  list-style-type: none;
+  border-top: 2px solid #9f9f9f;
+  border-bottom: 2px solid #9f9f9f;
+  padding-left: 0;
+}
+
+.subject {
+  text-align: center;
+  background-color: #f2f2f2;
+  font-size: 20px;
+  border-bottom: 1px solid #9f9f9f;
+}
+
+.writer, .regdate {
+  display: flex;
+  border-bottom: 1px solid #9f9f9f;
+}
+
+.detail-title {
+  font-weight: bold;
+  padding: 5px 20px;
+  background-color: #f2f2f2;
+}
+
+.detail-text {
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.detail-content {
+  padding: 30px 20px;
+}
+
+.right-box {
+  text-align: right;
+  margin-top: 20px;
+}
+
+.custom-btn, .form-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.custom-btn:hover, .form-btn:hover {
+  background-color: #0056b3;
+}
+
+/*댓글*/
+/* Reply box */
+.reply-box {
+  padding: 20px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  margin-top: 20px;
+}
+
+.reply-box h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+#reply-form {
+  margin-top: 10px;
+}
+
+#reply-form label {
+  display: none;
+}
+
+#reply-form input[type="text"],
+#reply-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+#reply-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#reply-btn:hover {
+  background-color: #0056b3;
+}
+
+
+/*이전글, 다음글*/
+.move-box ul {
+  list-style-type: none;
+  margin-top: 60px;
+  border-top: 2px solid #9f9f9f;
+  border-bottom: 2px solid #9f9f9f;  
+  padding-left: 0;
+}
+
+.move-box li {
+  display: flex;
+}
+
+.move-box .pre {
+  border-bottom: 1px solid #9f9f9f;	
+}
+
+.list-title {
+  font-weight: bold;
+  padding: 5px 20px;
+  background-color: #f2f2f2;
+}
+
+.list-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration: none;
+  color: #000;
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
+}

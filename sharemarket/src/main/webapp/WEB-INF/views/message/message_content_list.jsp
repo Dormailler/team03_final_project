@@ -1,39 +1,48 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>메세지 내용 목록</title>
+</head>
+<body>
+    <h1>메세지 내용 목록</h1>
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>메세지 ID</th>
+                <th>보낸 사람</th>
+                <th>받는 사람</th>
+                <th>내용</th>
+                <th>전송 시간</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach items="${clist}" var="message">
+                <tr>
+                    <td>${message.no}</td>
+                    <td>${message.send_nick}</td>
+                    <td>${message.recv_nick}</td>
+                    <td>
+					<td><a href="<c:url value="/viewMessage?messageId=${message.no}"/>" target="_blank">${message.content}</a></td>
+                    </td>
+                    <td>${message.send_time}</td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
+    <%@ include file="../footer.jsp" %>
 
-
-
-<c:forEach var="tmp" items="${clist }">
-	
-	<c:choose>
-		<c:when test="${sessionScope.nick ne tmp.send_nick }">
-		<!-- 받은 메세지 -->
-		<div class="incoming_msg">
-			<div class="incoming_msg_img">
-				<a href="other_profile.do?other_nick=${tmp.send_nick }">
-					<img src="./upload/profile/${tmp.profile }" alt="보낸사람 프로필">
-				</a>
-			</div>
-			<div class="received_msg">
-				<div class="received_withd_msg">
-					<p>${tmp.content }</p>
-					<span class="time_date"> ${tmp.send_time }</span>
-				</div>
-			</div>
-		</div>
-		</c:when>
-		
-		<c:otherwise>
-		<!-- 보낸 메세지 -->
-		<div class="outgoing_msg">
-			<div class="sent_msg">
-				<p>${tmp.content }</p>
-				<span class="time_date"> ${tmp.send_time }</span>
-			</div>
-		</div>
-		</c:otherwise>
-	</c:choose>
-
-
-</c:forEach>
+    <script>
+        function openMessagePopup(messageId) {
+            var url = "/message_content_popup.do?no=" + messageId;
+            var width = 500;
+            var height = 400;
+            var left = (window.innerWidth - width) / 2;
+            var top = (window.innerHeight - height) / 2;
+    
+            window.open(url, "_blank", "width=" + width + ", height=" + height + ", left=" + left + ", top=" + top);
+        }
+    </script>
+</body>
+</html>

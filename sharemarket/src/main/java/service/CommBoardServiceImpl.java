@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import commBoard.CommCriteria;
 import dao.CommBoardDAO;
 import dto.CommBoardDTO;
 
@@ -23,8 +24,8 @@ public class CommBoardServiceImpl implements CommBoardService {
 	}
 	
 	//게시글 조회
-	public ArrayList<CommBoardDTO> commList() {
-		return dao.commList();
+	public ArrayList<CommBoardDTO> commList(CommCriteria criteria) {
+		return dao.commList(criteria);
 	}
 	
 	//게시글 보기
@@ -32,12 +33,29 @@ public class CommBoardServiceImpl implements CommBoardService {
 		return dao.commView(no);
 	}
 
+	//게시글 수정
 	public boolean commModify(CommBoardDTO dto) {
 		return dao.commModify(dto);
 	}
 
+	//게시글 삭제
 	public boolean commRemove(int no) {
 		return dao.commRemove(no);
+	}
+	
+	//게시글 개수
+	public int getTotal(CommCriteria criteria) {
+		return dao.getTotal(criteria);
+	}
+	
+	//이전 게시글 보기
+	public CommBoardDTO prevBoard(int no) {
+		return dao.prevBoard(no);
+	}
+
+	//다음 게시글 보기
+	public CommBoardDTO nextBoard(int no) {
+		return dao.nextBoard(no);
 	}
 }
 

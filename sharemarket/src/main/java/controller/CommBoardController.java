@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import commBoard.CommCriteria;
+import commBoard.CommPagination;
 import dto.CommBoardDTO;
 import service.CommBoardService;
 
@@ -20,6 +22,14 @@ public class CommBoardController {
 
 	@Autowired
 	private CommBoardService service;
+	
+	//줄바꿈 처리 로직
+	public String convertToHtmlFormat(String text) {
+	    String htmlText = text.replace("\r\n", "<br>")
+	                          .replace("\n", "<br>")
+	                          .replace("\r", "<br>");
+	    return htmlText;
+	}
 	
 	//게시글 작성 get
 	@GetMapping("/commWrite")
@@ -33,27 +43,36 @@ public class CommBoardController {
 	public String commWrite(CommBoardDTO dto)	{
 		//로그 메시지 출력
 		logger.info("게시글 작성 수행");
+		
+	    //줄바꿈
+		String content = convertToHtmlFormat(dto.getContent());
+		dto.setContent(content);
+
 		service.commWrite(dto);
+		
 		return "redirect:/commList";
 	}
 	
 	//게시글 조회
 	@GetMapping("/commList")
-	public void commList(Model model) {
+	public void commList(Model model, CommCriteria criteria) {
 		logger.info("게시글 목록 조회");
-		model.addAttribute("commList", service.commList());
+		model.addAttribute("commList", service.commList(criteria));
+		model.addAttribute("CommPagination", new CommPagination(criteria, service.getTotal(criteria)));
 	}
 	
 	//게시글 보기
 	@GetMapping("/commView")
 	public void commView(@RequestParam("no") int no, Model model) {
-		model.addAttribute("communityBoard", service.commView(no));
+		model.addAttribute("commView", service.commView(no));
+		model.addAttribute("prev", service.prevBoard(no));
+		model.addAttribute("next", service.nextBoard(no));
 	}
 	
 	//게시글 수정 get
 	@GetMapping("/commModify")
-	public void commModify(@RequestParam("no") int no, Model model) {
-		model.addAttribute("communityBoard", service.commView(no));
+	public void commModify(@RequestParam("no") int no, Model model, CommBoardDTO dto) {
+		model.addAttribute("commModify", service.commView(no));
 		logger.info("게시글 수정 페이지");
 	}
 	
@@ -61,8 +80,13 @@ public class CommBoardController {
 	@PostMapping("/commModify")
 	public String commModify(CommBoardDTO dto) {
 		logger.info("게시글 수정 수행");
+		
+	    //줄바꿈
+		String content = convertToHtmlFormat(dto.getContent());
+		dto.setContent(content);
+		
 		service.commModify(dto);
-		return "redirect:/view?no="+dto.getNo();
+		return "redirect:/commView?no="+dto.getNo();
 	}
 	
 	//게시글 삭제
