@@ -32,8 +32,10 @@ $(document).ready(function(){
 		  
 	      const li = document.createElement('li');
 	      const img = document.createElement('img');
+	      
 	      img.setAttribute('src', e.target.result);
 	      img.setAttribute('data-file', file.name);
+	      
 	      li.appendChild(img);
 
 	      return li;
