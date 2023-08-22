@@ -9,6 +9,8 @@ public class CommBoardDTO {
 	private String writer;
 	private Date regdate;
 	private Date updatedate;
+	private int viewcnt;
+	private int replycnt;
 	
 	public int getNo() {
 		return no;
@@ -47,10 +49,22 @@ public class CommBoardDTO {
 		this.updatedate = updatedate;
 	}
 	
+	public int getViewCnt() {
+		return viewcnt;
+	}
+	public void setViewCnt(int viewcnt) {
+		this.viewcnt = viewcnt;
+	}
+	public int getReplyCnt() {
+		return replycnt;
+	}
+	public void setReplyCnt(int replycnt) {
+		this.replycnt = replycnt;
+	}
 	@Override
 	public String toString() {
 		return "CommBoardDTO [no=" + no + ", title=" + title + ", content=" + content + ", writer=" + writer
-				+ ", regdate=" + regdate + ", updatedate=" + updatedate + "]";
+				+ ", regdate=" + regdate + ", updatedate=" + updatedate + ", viewcnt=" + viewcnt + ", replycnt="
+				+ replycnt + "]";
 	}
-
 }

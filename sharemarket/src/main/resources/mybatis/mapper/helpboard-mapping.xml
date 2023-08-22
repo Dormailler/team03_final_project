@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.HelpBoardDAO">
+
+<!-- 문의 등록 -->
+<insert id="help">
+	insert into helpboard(h_type, h_title, h_id, h_content)
+	values (#{h_type}, #{h_title}, #{h_id}, #{h_content})
+</insert>
+
+<!-- 문의 출력 -->
+<select id="helplist" resultType="HelpBoardDTO">
+	select * from (
+		select @rownum:=@rownum+1 rownum, helpboard.*
+		from helpboard, (select @rownum:=0) as tmp
+		where h_id=#{id}
+		order by h_no desc
+	) as h
+	<![CDATA[
+		where rownum > (#{pageNum}-1)*#{amount} and rownum <= #{pageNum}*#{amount}
+		]]>
+</select>
+
+<!-- 목록 건수 조회 -->
+<select id="helpTotal" resultType="int">
+	select count(*) from helpboard
+	where h_id=#{id}
+</select>
+</mapper>
