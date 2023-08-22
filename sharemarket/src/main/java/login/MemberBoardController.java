@@ -46,31 +46,6 @@ public class MemberBoardController {
         return "/login/login_login";
     }
 
-@GetMapping("/boardlogin")
-public String loginform() {
-    return "/login/login_login";
-}
-
-@PostMapping("/boardlogin")
-public String loginprocess(String user_id, String pw, HttpSession session) {
-    // 1. c_member id, pw 확인
-    MemberDTO dto = service.oneMember(user_id);
-    System.out.println("dto class : " + dto.toString());
-    		
-    if (dto != null && dto.getPw().equals(pw)) {
-        session.setAttribute("session_id", user_id);
-        session.setAttribute("nick", dto.getNick()); // 세션에 nick 설정
-        System.out.println("nick : "  + dto.getNick());
-        return "redirect:/"; // 로그인 성공 시 메인 페이지로 이동
-    } else {
-        session.removeAttribute("session_id");
-        // 로그인 실패 처리 (예: 메시지 출력 또는 다시 로그인 페이지로 이동)
-        return "/login/login_login";
-        
-    }
-    
-}
-
 @RequestMapping("/boardlogout")
 public String logout(HttpSession session) {
     session.removeAttribute("session_id");
@@ -115,8 +90,7 @@ public ModelAndView login(String user_id, String pw, HttpSession session) {
     MemberDTO dto = service.oneMember(user_id);
     System.out.println("--------로그인----------");
     System.out.println("파라미터유저아이디 : " + user_id + " " + pw);
-    System.out.println("dto class : " + dto.toString());
-
+    System.out.println("dto class : " + (dto != null ? dto.toString() : "null"));
 
     // 1. 사용자 정보 확인
     MemberDTO dtore = service.infoMember(user_id);
@@ -127,7 +101,7 @@ public ModelAndView login(String user_id, String pw, HttpSession session) {
         session.setAttribute("loggedIn", true);
         session.setAttribute("session_id", user_id);
         session.setAttribute("session_url", dtore.getProfile_url());
-        session.setAttribute("nick", dto.getNick()); // 세션에 nick 설정
+        session.setAttribute("nick", dto != null ? dto.getNick() : "unknown"); // 세션에 nick 설정
 
         mv.setViewName("redirect:/"); // 로그인 성공 시 "/" 주소로 리다이렉트
     } else {

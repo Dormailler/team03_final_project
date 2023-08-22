@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -57,24 +58,33 @@ public class MessageController {
         return "message/sendMessage"; // sendMessage.jsp로 이동
     }
 
-    @RequestMapping(value = "/sendMessage", method = RequestMethod.POST)
-    @ResponseBody
-    public String sendMessage(HttpServletRequest request, HttpSession session) {
-        String recv_nick = request.getParameter("recv_nick");
-        String content = request.getParameter("content");
-        String send_nick = (String) session.getAttribute("nick");
+	@RequestMapping(value = "/sendMessage", method = RequestMethod.POST)
+	public String sendMessage(HttpServletRequest request, HttpSession session) {
+	    String recv_nick = request.getParameter("recv_nick");
+	    String content = request.getParameter("content");
+	    String send_nick = (String) session.getAttribute("nick");
 
-        MessageTO to = new MessageTO();
-        to.setSend_nick(send_nick);
-        to.setRecv_nick(recv_nick);
-        to.setContent(content);
+	    MessageTO to = new MessageTO();
+	    to.setSend_nick(send_nick);
+	    to.setRecv_nick(recv_nick);
+	    to.setContent(content);
 
-        int flag = messageDao.messageSendInlist(to);
+	    int flag = messageDao.messageSendInlist(to);
 
-        if (flag > 0) {
-            return "redirect:/message/update_success.jsp";
-        } else {
-            return "redirect:/message/fail.jsp";
-        }
+	    if (flag > 0) {
+	        return "redirect:/success"; // 절대 경로로 성공 페이지로 리디렉트
+	    } else {
+	        return "redirect:fail"; // 절대 경로로 실패 페이지로 리디렉트
+	    }
+	}
+	
+	@GetMapping("/success")
+    public String showSuccessPage() {
+        return "/message/update_success";
+    }
+	
+	@GetMapping("/fail")
+    public String showFailPage() {
+        return "/message/fail";
     }
 }
