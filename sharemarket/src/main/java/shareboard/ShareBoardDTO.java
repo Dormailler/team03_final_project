@@ -5,7 +5,7 @@ import java.sql.Date;
 public class ShareBoardDTO {
 	String user_id, title, category, item, location, img, content;
 	boolean is_shared, is_reported;
-	int share_id, likes, price;
+	int share_id, view_cnt, price;
 	Date date;
 	public int getShare_id() {
 		return share_id;
@@ -67,11 +67,11 @@ public class ShareBoardDTO {
 	public void setIs_reported(boolean is_reported) {
 		this.is_reported = is_reported;
 	}
-	public int getLikes() {
-		return likes;
+	public int getView_cnt() {
+		return view_cnt;
 	}
-	public void setLikes(int likes) {
-		this.likes = likes;
+	public void setView_cnt(int view_cnt) {
+		this.view_cnt = view_cnt;
 	}
 	public int getPrice() {
 		return price;
