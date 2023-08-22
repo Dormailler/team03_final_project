@@ -4,8 +4,96 @@
 <mapper namespace="shareboard.ShareBoardDAO">
 	
 	<!-- 게시글 목록 불러오기 -->
-	<select id="getBoardList" resultType="shareboarddto">
+	<select id="getShareBoardList" parameterType="shareboarddto">
 		SELECT * FROM `shareboard`;
+	</select>
+	
+	<!-- 게시글 작성하기 -->
+	<insert id="writeShareBoard" parameterType="shareboarddto">
+		INSERT INTO `shareboard` 
+					(`user_id`, `title`, `category`, `location`, `item`, `is_shared`, `date`, `price`) 
+		VALUES		(#{user_id}, #{title}, #{category}, #{location}, #{item}, false, now(), #{price});			
+	</insert>
+
+	<!-- 게시글 불러오기 -->
+	<select id="getBoardDetail" resultType="shareboarddto" parameterType="int">
+		SELECT * FROM `shareboard` WHERE `share_id` = #{share_id};
+	</select>
+	
+	<!-- 게시글 댓글 불러오기 -->
+	<select id="getComment" parameterType="int">
+		SELECT c.*, u.* 
+		FROM `comment` c 
+		JOIN `user_table` u ON c.`user_id` = u.`user_id` 
+		WHERE c.`share_id` = #{share_id}
+		ORDER BY c.`date` DESC;
+	</select>
+	
+	<!-- pagination -->
+	<select id="getAllBoardPaging" resultType="shareboarddto" parameterType="pagination.SearchDTO">
+		SELECT *
+		FROM   `shareBoard`
+		<where>
+			<choose>
+				<when test="searchType1 != null and searchType1 != ''">
+	                   <if test="searchType1.equals('전체')">
+	                       AND category = *
+	                   </if>				
+	                   <if test="searchType1.equals('뷰티')">
+	                       AND category = '뷰티'
+	                   </if>
+	                   <if test="searchType1.equals('아동')">
+	                       AND category = '아동'
+	                   </if>
+	                   <if test="searchType1.equals('생활')">
+	                       AND category = '생활'
+	                   </if>
+	                   <if test="searchType1.equals('전자')">
+	                       AND category = '전자'
+	                   </if>
+	                   <if test="searchType1.equals('기타')">
+	                       AND category = '기타'
+	                   </if>                                          
+				</when>
+			</choose>
+			<if test="keyword != null and keyword != ''">
+						AND `title` LIKE CONCAT('%', #{keyword}, '%')
+			</if>
+		</where>
+		ORDER BY `date` DESC
+		LIMIT #{pagination.limitStart}, #{recordSize}
+	</select>
+	
+	<select id="getCount" resultType="int" parameterType="pagination.SearchDTO">
+		SELECT COUNT(*)
+		FROM   `shareBoard`
+		<where>
+			<choose>
+				<when test="searchType1 != null and searchType1 != ''">
+                    <if test="searchType1.equals('전체')">
+                        AND category = *
+                    </if>					
+                    <if test="searchType1.equals('뷰티')">
+                        AND category = '뷰티'
+                    </if>
+                    <if test="searchType1.equals('아동')">
+                        AND category = '아동'
+                    </if>
+                    <if test="searchType1.equals('생활')">
+                        AND category = '생활'
+                    </if>
+                    <if test="searchType1.equals('전자')">
+                        AND category = '전자'
+                    </if>
+                    <if test="searchType1.equals('기타')">
+                        AND category = '기타'
+                    </if> 
+				</when>                                       
+			</choose>
+			<if test="keyword != null and keyword != ''">
+						AND `title` LIKE CONCAT('%', #{keyword}, '%')
+			</if>
+		</where>
 	</select>
 	
 </mapper>
