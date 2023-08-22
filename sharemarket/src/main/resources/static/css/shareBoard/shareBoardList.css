@@ -1,0 +1,197 @@
+@charset "UTF-8";
+
+:root {
+  --light-main: #ffb100;
+  --light-sub: #fbc252;
+  --light-point: #8a6f4e;
+  --light-stroke: #ded4c7;
+  --light-text: #1f1f1f;
+  --dark-main: #3c4245;
+  --dark-sub: #5f6769;
+  --dark-point: #ffd369;
+  --dark-stroke: #eeeeee;
+  --dark-text: #ffffff;
+  --gray1: #333333;
+  --gray2: #4f4f4f;
+  --gray3: #828282;
+  --gray4: #bdbdbd;
+  --gray5: #e0e0e0;
+  --white: #ffffff;
+  --heading34: normal bold 34px 'Noto Sans KR';
+  --heading24: normal bold 24px 'Noto Sans KR';
+  --heading18: normal bold 18px 'Noto Sans KR';
+  --body16: normal normal 16px 'Noto Sans KR';
+  --body14: normal normal 14px 'Noto Sans KR';
+  --button16: normal bold 16px 'Noto Sans KR';
+  --button14: normal bold 14px 'Noto Sans KR';
+  --button12: normal bold 12px 'Noto Sans KR';
+  --caption14: normal normal 14px 'Noto Sans KR';
+  --caption12: normal normal 12px 'Noto Sans KR';
+  --highlight16: normal bold 16px 'Noto Sans KR';
+  --highlight14: normal bold 14px 'Noto Sans KR';
+  --shadow100: 0px 4px 4px 0px rgba(167, 176, 192, 0.16);
+  --shadow200: 3px 5px 8px 0px rgba(167, 176, 192, 0.32);
+}
+
+
+#layout {
+  width: 1300px;
+  height: auto;
+  margin: 0 auto;
+}
+#boardName {
+  font-size: 36px;
+  margin: 50px auto;
+  text-align: center;
+  font-weight: bold;
+}
+.categoryWrap {
+  margin-left: 155px;
+  display: flex;
+  > div {
+  	  margin-right: 5px;
+  }  
+  > div a {
+	  background-color: white;
+	  border: 1px solid #1B5DDE;
+	  border-radius: 10px;
+	  padding: 5px 10px;
+	  text-decoration: none;
+  }
+  > div a:hover {
+	  background-color: #0d6efd;
+	  color: white;
+  }
+  .searchBox {
+  	  justify-content: end;
+  }
+}
+.writingBtnWrap {
+  float: right;
+  margin-right: 155px;
+	  > button {
+	  background-color: white;
+	  border: 1px solid #1B5DDE;
+	  border-radius: 10px;
+	  padding: 5px 10px;
+	}
+
+	  > button:hover {
+	  background-color: #0d6efd;
+	  color: white;
+	}
+}
+table {
+  min-width: calc(100% - 250px - 60px);
+  width: 70%;
+  margin: 20px auto;
+}
+table thead {
+  width: 100%;
+}
+table tbody {
+  width: 100%;
+  text-align: center;
+}
+tr:first-child {
+  font-weight: bolder;
+  border-bottom: 2px solid #1B5DDE;
+}
+tr:last-child {
+  border-bottom: 2px solid #1B5DDE;
+}
+table tbody tr{
+  border-bottom: 1px solid #1B5DDE;
+}
+table tbody td {
+  height: 45px;
+  line-height: 45px;
+  padding: 0 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+table tbody td:first-of-type,
+table tbody td:last-of-type {
+  padding: 0 10px;
+}
+
+#pagination {
+	margin: 30px 0px; 
+	display : flex;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+}
+
+#pagination .pagefirst, 
+#pagination .pagelast, 
+#pagination .prev,
+#pagination .next, 
+#pagination .pageNumber {
+	width: 25px;
+	height: 25px;
+	border-radius: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+#pagination .prevArrow, 
+#pagination .nextArrow {
+	height: 8px;
+	width: 8px;
+	border: solid var(--light-point);
+	border-width: 2px 2px 0 0;
+}
+
+.pageNumber {
+	font: var(--body14);
+	margin-right: 10px;
+	border-radius: 50% !important;
+}
+
+.pageNumber.active {
+	background-color: var(--light-sub);
+}
+
+.pageNumber:last-of-type {
+	margin-right: 0 !important;
+}
+
+.pagefirst, .prev {
+	margin-right: 10px;
+	background-color: var(--white);
+	border: 1px solid var(--light-stroke);
+}
+
+.pagefirst {
+	margin-right: 3px;
+}
+
+.prevArrow {
+	transform: rotate(-135deg);
+	margin-left: 3px;
+}
+
+.pagelast, .next {
+	margin-right: 3px;
+	border: 1px solid var(--light-stroke);
+}
+
+.nextArrow {
+	transform: rotate(45deg);
+	margin-right: 3px;
+}
+
+#pagination *:hover {
+	background-color: var(--light-sub);
+}
+
+#pagination *:hover .prevArrow, 
+#pagination *:hover .nextArrow {
+	border: solid var(--white);
+	border-width: 2px 2px 0 0;
+	background-color: transparent;
+}
