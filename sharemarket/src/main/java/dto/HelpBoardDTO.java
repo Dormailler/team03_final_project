@@ -5,7 +5,6 @@ public class HelpBoardDTO {
 	private String h_type;
 	private String h_title;
 	private String h_id;
-	private String h_email;
 	private String h_content;
 	private String h_regdate;
 	private int h_answer;
@@ -35,12 +34,6 @@ public class HelpBoardDTO {
 	}
 	public void setH_id(String h_id) {
 		this.h_id = h_id;
-	}
-	public String getH_email() {
-		return h_email;
-	}
-	public void setH_email(String h_email) {
-		this.h_email = h_email;
 	}
 	public String getH_content() {
 		return h_content;
@@ -77,7 +70,7 @@ public class HelpBoardDTO {
 	@Override
 	public String toString() {
 		return "HelpBoardDTO [h_no=" + h_no + ", h_type=" + h_type + ", h_title=" + h_title + ", h_id=" + h_id
-				+ ", h_email=" + h_email + ", h_content=" + h_content + ", h_regdate=" + h_regdate + ", h_answer="
+				+ ", h_content=" + h_content + ", h_regdate=" + h_regdate + ", h_answer="
 				+ h_answer + ", h_an_content=" + h_an_content + ", h_an_date=" + h_an_date + "]";
 	}
 	

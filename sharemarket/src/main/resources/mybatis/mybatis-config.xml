@@ -9,6 +9,7 @@
 	<typeAlias type="shareboard.ShareBoardDTO" alias="shareboarddto" />
 	<typeAlias type="shareboard.CommentDTO" alias="commentdto" />
 	<typeAlias type="dto.CommBoardDTO" alias="commBoardDto"/>
+	<typeAlias type="dto.HelpBoardDTO" alias="helpBoardDto"/>
 	<typeAlias type="dto.freeBoardDTO" alias="freedto"/>
 	<typeAlias type="login.MessageTO" alias="messageto"/>
 
