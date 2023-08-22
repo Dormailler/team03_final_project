@@ -95,10 +95,10 @@ td:first-child{
 	margin-top:20px;
 	text-align:center;
 }
-#delete_btn{
+#delete_btn,#update_btn{
 	margin-right:30px;
 }
-#delete_btn,#update_btn{
+#delete_btn,#update_btn,#complete_btn{
 	width: 85px;
     height: 40px;
 	background:white;
@@ -106,7 +106,7 @@ td:first-child{
 	border-radius:10px;
 	transition:0.5s;
 }
-#delete_btn:hover,#update_btn:hover{
+#delete_btn:hover,#update_btn:hover,#complete_btn:hover{
 	background:#1B5DDE;
 	color:white;
 }

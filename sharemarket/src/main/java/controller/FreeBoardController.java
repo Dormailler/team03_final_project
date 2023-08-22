@@ -40,7 +40,7 @@ public class FreeBoardController {
 		//page번호 해당 게시물 8개 리스트 조회 
 		int limitcount = 8;
 		int limitindex = (page-1)*limitcount;
-		System.out.println("토탈ㅋㅋ:"+totalBoard);
+
 		HashMap<String, String> paramap = new HashMap<>();
 		paramap.put("start", Integer.toString(limitindex));
 		paramap.put("end", Integer.toString(limitcount));
@@ -48,10 +48,6 @@ public class FreeBoardController {
 		paramap.put("text", text);
 		paramap.put("select", select);
 		List<freeBoardDTO> list = service.searchFreeBoard(paramap);
-		System.out.println("카테고리:" + category);
-		System.out.println("검색어:" + text);
-		System.out.println("선택:" + select);
-		System.out.println(list);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("totalBoard", totalBoard);
 		mv.addObject("freelist",list);
@@ -93,8 +89,10 @@ public class FreeBoardController {
                 try {
                 	File savelocation = new File("src/main/resources/static/save/");
                 	File saveFile = new File(savelocation.getAbsolutePath()+ "/" + file.getOriginalFilename());
-                	System.out.println(savelocation.getAbsolutePath()+ "/" + file.getOriginalFilename());
-                    file.transferTo(saveFile);
+   
+                	if (!saveFile.exists()) { 
+                	    file.transferTo(saveFile);
+                	}
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -104,8 +102,8 @@ public class FreeBoardController {
     }
 	@RequestMapping("/register_free")
 	@ResponseBody
-	public void register_free(String user_id,String title,String category,String location,String content,String img) {
-		service.registerFreeBoard(user_id, title, category, location, content, img);
+	public void register_free(String user_id,String title,String category,String location,String content,String img,String name) {
+		service.registerFreeBoard(user_id, title, category, location, content, img,name);
 	}
 	@RequestMapping("/delete_free")
 	@ResponseBody
@@ -116,6 +114,11 @@ public class FreeBoardController {
 	@ResponseBody
 	public void update_free(String share_id,String title,String category,String location,String content,String img) {
 		service.updateFreeBoard(share_id, title, category, location, content, img);
+	}
+	@RequestMapping("/shared_ok")
+	@ResponseBody
+	public void shared_ok(String share_id) {
+		service.SharedFreeBoard(share_id);
 	}
 	@RequestMapping("/search_free")
 	public ModelAndView search_free(@RequestParam(value="page", required=false, defaultValue="1") int page, String category,String text,String select) {
@@ -140,5 +143,10 @@ public class FreeBoardController {
 		mv.addObject("category",category);
 		mv.setViewName("free/free");
 		return mv;
+	}
+	@RequestMapping("/get_name")
+	@ResponseBody
+	public String get_name(String user_id) {
+		return service.getName(user_id);
 	}
 }

@@ -258,6 +258,7 @@ $(document).ready(function(){
 	        el.removeChild (el.lastChild);
 	    }
 	}	
+	
 	$('.location').on('click',function(){
 	    setTimeout(function() {
 	    	searchPlaces();	
@@ -342,25 +343,39 @@ $(document).ready(function(){
 		if(files.length == 0 && $('.image-preview li').length != 0){
 			fileNames = "${dto.img}";
 		}
-		
 		$.ajax({
-		      url: '/register_free', 
+			url: '/get_name', 
 		      method: 'POST', 
 		      data: {
-		    	user_id:"${session_id}",
-		    	title: title,
-		    	category: category,
-		        location: address,
-		        content: content,
-		        img: fileNames
+		    	user_id:"${session_id}"
 		      },
 		      success: function(response) {
-		        console.log(response);
+		        let name = response;
+		        $.ajax({
+				      url: '/register_free', 
+				      method: 'POST', 
+				      data: {
+				    	user_id:"${session_id}",
+				    	name: name,
+				    	title: title,
+				    	category: category,
+				        location: address,
+				        content: content,
+				        img: fileNames
+				      },
+				      success: function(response) {
+				        console.log(response);
+				      },
+				      error: function(xhr, status, error) {
+				        console.log(error);
+				      }
+				});
 		      },
 		      error: function(xhr, status, error) {
 		        console.log(error);
 		      }
 		});
+		
 		alert("등록되었습니다.");
 		location.href = "/free";
 	});
@@ -473,6 +488,7 @@ $(document).ready(function(){
 		        console.log(error);
 		      }
 		});
+		location.reload();
 		location.href = "/free";
 		
 	});
@@ -493,8 +509,7 @@ $(document).ready(function(){
 	<option value="child">아동</option>
 	<option value="life">생활</option>
 	<option value="electron">전자</option>
-	<option value="book">도서</option>
-	<option value="hobby">취미</option>
+	<option value="others">기타</option>
 </select>
 </div><br/>
 

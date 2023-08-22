@@ -2,6 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +22,7 @@ $(document).ready(function(){
 		if("${session_id}" == ""){
 			e.preventDefault();
 			alert("로그인 후 이용가능합니다.");
-			return;
+			location.href = "/login";
 		}
 	});
 	
@@ -38,6 +40,13 @@ $(document).ready(function(){
         	
         }
  	});
+ 	
+ 	 var dateElements = document.querySelectorAll(".date");
+	 dateElements.forEach(function(element) {
+	     var fullDate = element.textContent;
+	     var trimmedDate = fullDate.substring(0, 11);
+	     element.textContent = trimmedDate;
+    	});
 });
 </script>
 
@@ -61,8 +70,7 @@ $(document).ready(function(){
 		<li class="child"><a href="free?category=child" class="">아동</a></li>
 		<li class="life"><a href="free?category=life" class="">생활</a></li>
 		<li class="electron"><a href="free?category=electron" class="">전자</a></li>
-		<li class="book"><a href="free?category=book" class="">도서</a></li>
-		<li class="hobby"><a href="free?category=hobby" class="">취미</a></li>
+		<li class="book"><a href="free?category=others" class="">기타</a></li>
 	</ul>
 </div>
 <div id="content_wrap">
@@ -70,11 +78,15 @@ $(document).ready(function(){
 		<tr>
 			<c:forEach items="${freelist}" var="dto" begin="0" end="3">
 				<td>
-					<a href="free/${dto.share_id}"><img referrerpolicy="no-referrer" src="/save/${dto.img}" alt="상품이미지" class="img" onerror="this.src='${dto.img}';"></a>
+					<a href="free/${dto.share_id}"><img referrerpolicy="no-referrer" src="/save/${dto.img}" alt="상품이미지" class="img" onerror="this.src='${dto.img}';"/></a>
 					<div class="detail_wrap">
 						<h4 class="title"><a href="free/${dto.share_id}">${dto.title}</a></h4>
-	                    <h6><a href="" class="user">${dto.user_id}</a> ${dto.location}</h6>
-	                    <h6 class="content">댓글 ${dto.comment}</h6>
+	                    <h6><a href="" class="user">${dto.name}</a></h6>
+	                    <h6>${dto.location}</h6>
+	                    <h6 class="content"><span class="date">${dto.date}</span></h6> 
+	                    <c:if test="${dto.is_shared}">
+	                    	<div class = "shared_wrap">거래완료</div>
+	                    </c:if>  
                     </div>
 				</td>
 			</c:forEach>
@@ -82,12 +94,16 @@ $(document).ready(function(){
 		<tr>
 			<c:forEach items="${freelist}" var="dto" begin="4" end="7">
 				<td>
-					<a href="free/${dto.share_id}"><img referrerpolicy="no-referrer" src="/save/${dto.img}" alt="상품이미지" class="img" onerror="this.src='${dto.img}';"></a>
+					<a href="free/${dto.share_id}"><img referrerpolicy="no-referrer" src="/save/${dto.img}" alt="상품이미지" class="img" onerror="this.src='${dto.img}';" /></a>
 					<div class="detail_wrap">
 						<h4 class="title"><a href="free/${dto.share_id}">${dto.title}</a></h4>
-	                    <h6><a href="" class="user">${dto.user_id}</a> ${dto.location}</h6>
-	                    <h6 class="content">댓글 ${dto.comment }</h6>
-                    </div>	
+	                    <h6><a href="" class="user">${dto.name}</a></h6>
+	                    <h6>${dto.location}</h6>
+	                    <h6 class="content"><span class="date">${dto.date}</span></h6> 
+	                    <c:if test="${dto.is_shared}">
+	                    	<div class = "shared_wrap">거래완료</div>
+	                    </c:if> 
+                    </div>
 				</td>
 			</c:forEach>
 		</tr>

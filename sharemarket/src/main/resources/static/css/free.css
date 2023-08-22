@@ -70,6 +70,7 @@ table{
 	width:70%;
 	margin:0 auto;
 }
+
 .top{
 	text-align:center;
 	margin-top:50px;
@@ -82,14 +83,16 @@ table img{
 	margin-bottom:8px;
 }
 td{
-	text-align:center;
+	position:relative;
+    width:320px;
+	padding: 10px;
 }
 .detail_wrap{
-	margin:0 auto;
 	width:300px;
 }
 .content{
 	margin-bottom:100px;
+	
 }
 .title{
 	width:300px;
@@ -102,7 +105,8 @@ table a{
 	color:black;
 }
 .user{
-	color:#1B5DDE;
+	color: #000D84;
+	margin-right: 10px;
 }
 #full_wrap{
 	width:1440px;
@@ -180,4 +184,25 @@ table a{
 }
 #search_select:focus-visible{
 	outline:#000D84 auto 1px;
+}
+.content{
+	position:relative;
+}
+.comment{
+	position:absolute;
+	right: 10px;
+}
+.fashion{
+	margin-left:50px;
+}
+.shared_wrap{
+	position:absolute;
+	top: 10px;
+    width: 300px;
+    height: 500px;
+    background: rgba(0,0,0,0.3);
+    text-align: center;
+    line-height: 500px;
+    color: white;
+    font-size: 30px;
 }

@@ -254,6 +254,40 @@ $(document).ready(function(){
 	$('#update_btn').on('click',function(){
 		location.href = "/freew/${dto.share_id}"
 	});
+	var category_text = $('.category').text()
+	if(category_text == "fashion"){
+		$('.category').text('패션');
+	}else if(category_text == "beauty"){
+		$('.category').text('뷰티');
+	}else if(category_text == "child"){
+		$('.category').text('아동');
+	}else if(category_text == "life"){
+		$('.category').text('생활');
+	}else if(category_text == "electron"){
+		$('.category').text('전자');
+	}else if(category_text == "others"){
+		$('.category').text('기타');
+	}
+	$('#complete_btn').on('click',function(){
+		if(window.confirm("거래를 완료하셨습니까?") == true){
+			$.ajax({
+			      url: '/shared_ok', 
+			      method: 'POST', 
+			      data: {
+			    	share_id:"${dto.share_id}"
+			      },
+			      success: function(response) {
+			        console.log(response);
+			        alert("거래 완료 처리되었습니다.");
+			        location.href = "/free";
+			      },
+			      error: function(xhr, status, error) {
+			        console.log(error);
+			      }
+			});
+		}else{ return; }
+	})
+	
 });
 </script>
 
@@ -275,11 +309,7 @@ $(document).ready(function(){
 			</tr>
 			<tr>
 				<td><h4>분류</h4></td>
-				<td><h4>${dto.category }</h4></td>
-			</tr>
-			<tr>
-				<td><h4>거래여부</h4></td>
-				<td><h4>${dto.is_shared}</h4></td>
+				<td><h4 class="category">${dto.category }</h4></td>
 			</tr>
 		</table>
 	</div>
@@ -302,11 +332,12 @@ $(document).ready(function(){
 			    </div>
 		</div>
 	</div>
-	<div id="img"><h3>사진</h3> <img referrerpolicy="no-referrer" src="/save/${dto.img }"/></div>
+	<div id="img"><h3>사진</h3> <img referrerpolicy="no-referrer" src="/save/${dto.img }" onerror="this.src='${dto.img}';"/></div>
 	<div id="content_box">${dto.content }</div>
 		<div id="btn_wrap">
 			<button id="delete_btn">삭제</button>
 			<button id="update_btn">수정</button>
+			<button id="complete_btn">거래완료</button>
 		</div>
 </div>
 

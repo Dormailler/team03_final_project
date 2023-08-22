@@ -24,8 +24,8 @@ public class freeBoardService {
 	public int getTotalFreeBoard(String category) {
 		return dao.getTotalFreeBoard(category);
 	}
-	public void registerFreeBoard(String user_id,String title,String category,String location,String content,String img) {
-		dao.registerFreeBoard(user_id, title, category, location, content, img);
+	public void registerFreeBoard(String user_id,String title,String category,String location,String content,String img,String name) {
+		dao.registerFreeBoard(user_id, title, category, location, content, img, name);
 	}
 	public void deleteFreeBoard(String share_id) {
 		dao.deleteFreeBoard(share_id);
@@ -38,5 +38,11 @@ public class freeBoardService {
 	}
 	public int getTotalsearchFreeBoard(String category,String text,String select) {
 		return dao.getTotalsearchFreeBoard(category, text, select);
+	}
+	public void SharedFreeBoard(String shared_id) {
+		dao.SharedFreeBoard(shared_id);
+	}
+	public String getName(String user_id) {
+		return dao.getName(user_id);
 	}
 }
