@@ -181,14 +181,15 @@ select.form-select {
 }
 
 .page-btn.active a {
-  background-color: #007bff;
+  background-color: #1B5DDE;
   color: white;
-  border-color: #007bff;
+  border-color: #1B5DDE;
 }
 
 .page-btn a:hover {
   background-color: #0056b3;
   color: #fff;
+  transition: background-color 0.3s ease;
 }
 
 /* Previous and Next Buttons */

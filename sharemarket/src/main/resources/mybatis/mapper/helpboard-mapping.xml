@@ -5,8 +5,8 @@
 
 <!-- 문의 등록 -->
 <insert id="help">
-	insert into helpboard(h_type, h_title, h_id, h_email, h_content)
-	values (#{h_type}, #{h_title}, #{h_id}, #{h_email}, #{h_content})
+	insert into helpboard(h_type, h_title, h_id, h_content)
+	values (#{h_type}, #{h_title}, #{h_id}, #{h_content})
 </insert>
 
 <!-- 문의 출력 -->

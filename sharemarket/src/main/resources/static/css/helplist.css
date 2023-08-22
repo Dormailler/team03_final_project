@@ -53,6 +53,8 @@ h1 {
 #helplist_Btn {
     text-align: center;
     margin-top: 20px;
+    justify-content: flex-end;
+    display: flex;
 }
 
 #helplist_Btn button {
@@ -63,6 +65,7 @@ h1 {
 	border-radius: 4px;
 	cursor: pointer;
 	transition: background-color 0.3s ease;
+	height: 40px;
 }
 
 #helplist_Btn button:hover {
@@ -103,4 +106,31 @@ h1 {
 #helplist_table th:nth-child(2),
 #helplist_table td:nth-child(2) {
     width: 40%; /* 원하는 너비로 조절 */
+}
+
+/* Pagination Styles */
+#paging {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#paging a {
+    color: #333;
+    text-decoration: none;
+    padding: 5px 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+    margin-right: 5px;
+}
+
+#paging a.active {
+    background-color: #1B5DDE;
+    color: #fff;
+    border: 1px solid #1B5DDE;
+}
+
+#paging a:hover {
+    background-color: #0056b3;
+    color: white;
+	transition: background-color 0.3s ease;
 }

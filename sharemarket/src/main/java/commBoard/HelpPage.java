@@ -9,18 +9,24 @@ public class HelpPage {
 	private int total;
 	
 	public HelpPage(HelpCriteria cri, int total) {
-		this.cri = cri;
-		this.total = total;
-		
-		this.endPage = (int)(Math.ceil(cri.getPageNum()/10.0))*10;
-		this.startPage = this.endPage-9;
-		int realEnd = (int)(Math.ceil((total*1.0)/cri.getAmount()));
-		if(realEnd < this.endPage) {
-			this.endPage = realEnd;
-		}
-		this.prev = this.startPage > 1;
-		this.next = this.endPage < realEnd;
+	    this.cri = cri;
+	    this.total = total;
+
+	    int tempEnd = (int) (Math.ceil(cri.getPageNum() / 5.0)) * 5;
+	    this.startPage = tempEnd - 4;
+
+	    int realEnd = (int) (Math.ceil((total * 1.0) / cri.getAmount()));
+
+	    if (realEnd <= tempEnd) {
+	        this.endPage = realEnd;
+	    } else {
+	        this.endPage = tempEnd;
+	    }
+
+	    this.prev = this.startPage > 1;
+	    this.next = this.endPage < realEnd;
 	}
+
 	
 	public int getStartPage() {
 		return startPage;

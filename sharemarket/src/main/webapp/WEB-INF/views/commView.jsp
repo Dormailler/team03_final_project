@@ -8,6 +8,7 @@
 <title>게시글 내용</title>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/css/commView.css">
+<link rel="stylesheet" href="/css/bootsrtap.min.css">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
 var replyService = (function() {
@@ -87,7 +88,7 @@ window.onload = function() {
 								</ul>
 								<div class="btn-box right-box">
 									<a href="/commModify?no=${commView.no }"><input type="button" value="수정" class="custom-btn"></a>
-									<input type="button" value="삭제" class="custom-btn">							
+									<a href="/commRemove?no=${commView.no }"><input type="button" value="삭제" class="custom-btn"></a>						
 								</div>
 							</form>
 						</div>

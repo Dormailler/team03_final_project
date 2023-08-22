@@ -6,9 +6,27 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="/css/commList.css">
+<link rel="stylesheet" href="/css/bootsrtap.min.css">
 <title>게시글 조회</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    //로그인 정보 없으면 글쓰기 X
+    $('.form-btn').click(function() {
+        var isLoggedIn = <%= session.getAttribute("session_id") != null %>;
+        
+        if (isLoggedIn) {
+            // 로그인 상태인 경우, /help 페이지로 이동
+            window.location.href = '/commWrite';
+        } else {
+            // 로그인 상태가 아닌 경우, 얼럿 메시지 표시
+            alert('로그인 후에 글쓰기가 가능합니다.');
+            window.location.href = '/login';
+        }
+    });
+});
+</script>
 </head>
 <body>
 	<div id="wrap">
@@ -21,7 +39,6 @@
 				<div class="border-content">
 					<div class="board-box">
 						<div class="border-header">
-							<div class="list-info">총 게시글 내역, 페이이지 넘버링</div>
 							<div class="serch-box">
 								<form action="/commList${CommPagination.criteria.pageUri(criteria.page, criteria.keyword) }">
 									<select name="option" class="form-select">
@@ -58,7 +75,7 @@
 								</c:forEach>
 							</ul>
 							<div class="btn-box">
-								<a href="/commWrite"><input type="button" value="글쓰기" class="form-btn"></a>
+								<input type="button" value="글쓰기" class="form-btn"></a>
 							</div>
 							<div class="page-box">
 								<ul class="page">

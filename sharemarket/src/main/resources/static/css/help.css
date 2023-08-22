@@ -30,10 +30,24 @@ h1 {
     margin-bottom: 20px;
 }
 
-#help_title input[type="text"],
-#help_email input[type="email"] {
+#help_title {
+	width: 50%;
+}
+
+#help_title input[type="text"] {
     padding: 10px;
     border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+#help_type {
+	width: 15%;
+}
+
+select {
+	padding: 10px;
+	border: 1px solid #ccc;
     border-radius: 5px;
 }
 

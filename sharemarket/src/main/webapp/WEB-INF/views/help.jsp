@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/css/help.css">
+<link rel="stylesheet" href="/css/bootsrtap.min.css">
 <title>1:1 문의</title>
 </head>
 <body>
@@ -22,9 +23,13 @@
 						<div id="help_title">
 							<input type="text" name="h_title" placeholder="문의 제목">
 						</div>
-						<div id="help_email">
-							<input type="hidden" name="h_id" value="${sessionScope.id }">
-							<input type="email" name="h_email" value="${sessionScope.id }" placeholder="이메일">
+						<div id="help_type">
+							<!-- <input type="hidden" name="h_id" value="${sessionScope['id'] }"> -->
+							<select name="h_type" class="form-select">
+								<option value="문의" selected>문의</option>
+								<option value="신고">신고</option>
+								<option value="기타">기타</option>
+							</select>
 						</div>
 					</div>
 					<div id="help_contents">
