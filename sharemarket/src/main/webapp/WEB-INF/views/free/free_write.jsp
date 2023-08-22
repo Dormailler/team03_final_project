@@ -384,7 +384,9 @@ $(document).ready(function(){
 		const imagePreview = document.querySelector('.image-preview');
 		const li = document.createElement('li');
 	    const img = document.createElement('img');
+	    img.setAttribute('referrerpolicy', "no-referrer");
 	    img.setAttribute('src', "/save/" + "${dto.img}");
+	    img.setAttribute('onerror',"this.src='${dto.img}';");
 	    li.appendChild(img);
 	    imagePreview.appendChild(li);
 	}
@@ -397,7 +399,9 @@ $(document).ready(function(){
             break;
         }
     }
-    $('#editorText').val("${dto.content}");
+   	$('#editorText').html(`${dto.content}`.replace(/\n/g, '<br>'));
+
+    
     
     $('#update_btn').on('click',function(e){
 
