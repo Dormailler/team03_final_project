@@ -2,6 +2,9 @@ package login;
 
 
 import java.io.IOException;
+
+import java.util.Random;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.io.File;
@@ -15,6 +18,7 @@ import org.apache.ibatis.javassist.compiler.ast.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,6 +31,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+
+
 
 @Controller
 public class MemberBoardController {
@@ -49,13 +55,20 @@ public String loginform() {
 public String loginprocess(String user_id, String pw, HttpSession session) {
     // 1. c_member id, pw 확인
     MemberDTO dto = service.oneMember(user_id);
+    System.out.println("dto class : " + dto.toString());
+    		
     if (dto != null && dto.getPw().equals(pw)) {
         session.setAttribute("session_id", user_id);
+        session.setAttribute("nick", dto.getNick()); // 세션에 nick 설정
+        System.out.println("nick : "  + dto.getNick());
+        return "redirect:/"; // 로그인 성공 시 메인 페이지로 이동
     } else {
         session.removeAttribute("session_id");
         // 로그인 실패 처리 (예: 메시지 출력 또는 다시 로그인 페이지로 이동)
+        return "/login/login_login";
+        
     }
-    return "login/main";
+    
 }
 
 @RequestMapping("/boardlogout")
@@ -71,24 +84,39 @@ public String signupform() {
 
 @PostMapping("/signup")
 public ModelAndView signupForm(MemberDTO dto) {
-	System.out.println("=======================signup 이동=================="); 
-	System.out.println("파라미터유저아이디 : " + dto.getUser_id());
-	//1. 회원가 form data 받기 
-	//2. 서비스 로직 구현 
-	 // 프로필 사진을 받지 않으므로 profile_url은 빈 문자열로 설정
-	dto.setProfile_url("/img/user_logo.png");
+    System.out.println("=======================signup 이동==================");
+    System.out.println("파라미터유저아이디 : " + dto.getUser_id());
 
-	service.insertMember(dto);	
-	ModelAndView mv = new ModelAndView();
-	mv.addObject("memberresult", "회원 가입 성공");
-	mv.setViewName("/login/register");
-	return mv;
+    //1. 회원 가입 form data 받기 
+    //2. 서비스 로직 구현 
+    // 프로필 사진을 받지 않으므로 profile_url은 빈 문자열로 설정
+    dto.setProfile_url("/img/user_logo.png");
+
+    // 랜덤 닉네임 생성
+    String randomNick = generateRandomNick();
+    dto.setNick(randomNick);
+
+    service.insertMember(dto);    
+    ModelAndView mv = new ModelAndView();
+    mv.addObject("memberresult", "회원 가입 성공");
+    mv.setViewName("/login/register");
+    return mv;
+}
+
+// 랜덤한 숫자로 된 닉네임 생성을 위한 유틸리티 메서드
+private String generateRandomNick() {
+    Random random = new Random();
+    int randomNumber = random.nextInt(100000); // 0부터 99999 사이의 랜덤 숫자
+    return "user_" + randomNumber;
 }
 
 @PostMapping("/loginProcess")
 public ModelAndView login(String user_id, String pw, HttpSession session) {
+    MemberDTO dto = service.oneMember(user_id);
     System.out.println("--------로그인----------");
     System.out.println("파라미터유저아이디 : " + user_id + " " + pw);
+    System.out.println("dto class : " + dto.toString());
+
 
     // 1. 사용자 정보 확인
     MemberDTO dtore = service.infoMember(user_id);
@@ -99,6 +127,8 @@ public ModelAndView login(String user_id, String pw, HttpSession session) {
         session.setAttribute("loggedIn", true);
         session.setAttribute("session_id", user_id);
         session.setAttribute("session_url", dtore.getProfile_url());
+        session.setAttribute("nick", dto.getNick()); // 세션에 nick 설정
+
         mv.setViewName("redirect:/"); // 로그인 성공 시 "/" 주소로 리다이렉트
     } else {
         // 로그인 실패 시 에러 메시지 설정
@@ -119,7 +149,7 @@ public ModelAndView login(String user_id, String pw, HttpSession session) {
 
 @GetMapping("/myinfo")
 public ModelAndView myinfoForm(HttpSession session) {
-    // 로그인 상태 확인
+    // 로그인 여부 확인
     Object session_id = session.getAttribute("session_id");
     if (session_id == null) {
         // 로그인되지 않은 상태이므로 로그인 페이지로 리다이렉트
@@ -256,4 +286,6 @@ public String uploadProfile(@RequestParam("profile") MultipartFile file, HttpSes
     }
     return "redirect:/myinfo"; // 업로드가 완료되면 다시 myinfo 페이지로 이동합니다.
 }
+
+
 }

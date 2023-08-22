@@ -10,6 +10,7 @@
 	<typeAlias type="shareboard.CommentDTO" alias="commentdto" />
 	<typeAlias type="dto.CommBoardDTO" alias="commBoardDto"/>
 	<typeAlias type="dto.freeBoardDTO" alias="freedto"/>
+	<typeAlias type="login.MessageTO" alias="messageto"/>
 
 </typeAliases>
 </configuration>
