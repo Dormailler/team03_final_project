@@ -63,7 +63,8 @@ function checkId() {
      #btnjoin {
     margin: 10px auto;
     display: block;
-    
+    }
+    	
     .id_ok{
 color:#008000;
 display: none;
