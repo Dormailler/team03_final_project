@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>메세지 실패</title>
+    <title>메세지 성공</title>
     <style>
        body {
     display: flex;
@@ -26,11 +26,10 @@
     </style>
 </head>
 <body>
-<%@ include file="../header.jsp" %>
+<%@ include file="header.jsp" %>
     <div class="success-message">
-        <h2>메세지 전송에 실패하였습니다.</h2>
-        <h2>정보를 다시 확인해주세요.</h2>
+        <h2>메세지 전송이 완료되었습니다!</h2>
     </div>
-<%@ include file="../footer.jsp" %>
+<%@ include file="footer.jsp" %>
 </body>
 </html>
