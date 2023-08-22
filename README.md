@@ -31,7 +31,7 @@
 스마트에디터 api , 카카오맵 지도 api 
 
 ## 📚주요 기능
-### 멤버 관리 [주요 기능 (메뉴 관리)](https://github.com/Dormailler/team03_final_project/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-(%EB%A9%A4%EB%B2%84-%EA%B4%80%EB%A6%AC))
+### 멤버 관리 -> [주요 기능 (메뉴 관리)](https://github.com/Dormailler/team03_final_project/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-(%EB%A9%A4%EB%B2%84-%EA%B4%80%EB%A6%AC))
 
 ● 로그인
 - DB 값 검증
@@ -48,7 +48,7 @@
 - 정보 수정시 세션을 다시 구워서 재로그인.
 - 회원 탈퇴 버튼을 통해 DB에서 회원 정보 삭제 및 이를 통한 탈퇴
 
-### 메시지 [주요 기능 (메시지)](https://github.com/Dormailler/team03_final_project/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-(%EB%A9%94%EC%8B%9C%EC%A7%80))
+### 메시지 -> [주요 기능 (메시지)](https://github.com/Dormailler/team03_final_project/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-(%EB%A9%94%EC%8B%9C%EC%A7%80))
 
 ● 메시지 리스트
 - 닉네임을 통해 서로 메세지
