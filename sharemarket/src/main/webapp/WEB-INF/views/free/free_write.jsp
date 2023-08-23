@@ -386,7 +386,7 @@ $(document).ready(function(){
 		const li = document.createElement('li');
 	    const img = document.createElement('img');
 	    img.setAttribute('referrerpolicy', "no-referrer");
-	    img.setAttribute('src', "/Users/kdt/upload/" + "${dto.img}");
+	    img.setAttribute('src', "/save/" + "${dto.img}");
 	    img.setAttribute('onerror',"this.src='${dto.img}';");
 	    li.appendChild(img);
 	    imagePreview.appendChild(li);
