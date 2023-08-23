@@ -21,7 +21,7 @@ $(document).ready(function(){
 		nhn.husky.EZCreator.createInIFrame({
 			oAppRef: Editors,
 			elPlaceHolder : "editorText",
-			sSkinURI : "/smarteditor/SmartEditor2Skin.html",
+			sSkinURI : "/smarteditor/SmartEditor2Skin2.html",
 			fCreator: "createSEditor2"
 		})
 	}
@@ -274,6 +274,7 @@ $(document).ready(function(){
 		}
 		return false;
 	});
+	
 	$('#register_btn').on('click',function(e){
 
 		var address = $('.location_text').html();
@@ -339,7 +340,7 @@ $(document).ready(function(){
                 console.error("Error:", error);
             });
         }
-
+		
 		if(files.length == 0 && $('.image-preview li').length != 0){
 			fileNames = "${dto.img}";
 		}
@@ -384,7 +385,9 @@ $(document).ready(function(){
 		const imagePreview = document.querySelector('.image-preview');
 		const li = document.createElement('li');
 	    const img = document.createElement('img');
+	    img.setAttribute('referrerpolicy', "no-referrer");
 	    img.setAttribute('src', "/save/" + "${dto.img}");
+	    img.setAttribute('onerror',"this.src='${dto.img}';");
 	    li.appendChild(img);
 	    imagePreview.appendChild(li);
 	}
@@ -397,7 +400,10 @@ $(document).ready(function(){
             break;
         }
     }
-    $('#editorText').val("${dto.content}");
+    
+   	$('#editorText').html(`${dto.content}`.replace(/\n/g, '<br>'));
+
+    
     
     $('#update_btn').on('click',function(e){
 
@@ -488,9 +494,11 @@ $(document).ready(function(){
 		        console.log(error);
 		      }
 		});
-		location.reload();
-		location.href = "/free";
 		
+		location.href = "/free";
+		setTimeout(() => {
+			location.reload();
+		}, 100);
 	});
 	
 });
@@ -499,56 +507,75 @@ $(document).ready(function(){
 <body>
 
 <%@ include file="../header.jsp" %>
-<h1 id="top">무료나눔</h1>
- 
-<div id="category_wrap">
-<select id="category" value="${dto.category }">
-	<option disabled selected>카테코리를 설정해주세요.</option>
-	<option value="fashion">패션</option>
-	<option value="beauty">뷰티</option>
-	<option value="child">아동</option>
-	<option value="life">생활</option>
-	<option value="electron">전자</option>
-	<option value="others">기타</option>
-</select>
-</div><br/>
 
-<div id="area_wrap">
-<input id="title" type=text placeholder="제목을 입력해 주세요." value="${dto.title }"/>
-<input type="file" class="real-upload" accept="image/*" required multiple>
-<div id="upload_wrap">
-	<div class="upload"><button>사진 올리기</button></div>
-	<div class="location"><button>위치 설정하기</button></div>
-	<div class="location_text">${dto.location }</div>
-	<div id="modal_wrap">
-		<div class = "modal_location">
-			<div class="map_wrap" style="width:60%;">
-		    	<div id="map" style="width:100%;height:700px;position:relative;overflow:hidden;"></div>
-		    	<div id="menu_wrap" class="bg_white">
-			        <div class="option">
-			            <div>
-			                <form id="submit_form" submit="searchPlaces(); return false;">
-								   키워드 : <input type="text" id="keyword" size="15"> 
-			                    <button type="submit" id="searchBtn">검색</button> 
-			                </form>
-			            </div>
-			        </div>
-			        <hr>
-			        <ul id="placesList"></ul>
-			        <div id="pagination"></div>
-			    </div>
-			</div>
+ 
+
+<section class="board">
+	<h1 id="top"><span>무료나눔</span></h1>
+	
+	<div class="border-content">
+		<div class="board-box">
+
+				<select id="category" value="${dto.category }">
+					<option disabled selected>카테코리를 설정해주세요.</option>
+					<option value="fashion">패션</option>
+					<option value="beauty">뷰티</option>
+					<option value="child">아동</option>
+					<option value="life">생활</option>
+					<option value="electron">전자</option>
+					<option value="others">기타</option>
+				</select>
+
+				<div class="form-group">
+					<label for="title" class="form-label">제목</label>
+					<input type="text" id="title" class="input-text" value="${dto.title }"/>
+				</div>
+				
+				<div id ="location_wrap" style="display:flex;">
+					<div class="location"><button>위치 설정하기</button></div>
+					<div class="location_text">${dto.location }</div>
+				</div>
+				<input type="file" class="real-upload" accept="image/*" required multiple>
+				<div id="upload_wrap">
+					<div class="upload"><button>사진 올리기</button></div>
+										<div id="modal_wrap">
+						<div class = "modal_location">
+							<div class="map_wrap" style="width:60%;">
+							
+						    	<div id="map" style="width:100%;height:700px;position:relative;overflow:hidden;"></div>
+						    	<div class="close">X</div>
+						    	<div id="menu_wrap" class="bg_white">
+							        <div class="option">
+							            <div>
+							                <form id="submit_form" submit="searchPlaces(); return false;">
+												   키워드 : <input type="text" id="keyword" size="15"> 
+							                    <button type="submit" id="searchBtn">검색</button> 
+							                </form>
+							            </div>
+							        </div>
+							        <hr>
+							        <ul id="placesList"></ul>
+							        <div id="pagination"></div>
+							    </div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<input id="location_input">
+				<ul class="image-preview"></ul>
+				<div class="form-group">
+					<label for="content" class="form-label">내용</label>
+					<textarea id="editorText" rows="20" cols ="10" placeholder="내용을 입력해주세요"></textarea>
+				</div>
+				<div class="btn-box">
+					<button id="register_btn">등록</button>
+					<button id="update_btn">수정</button>	
+					<button id="cancel_btn">취소</button>						
+				</div>
 		</div>
 	</div>
-</div>
-<input id="location_input">
-<ul class="image-preview"></ul>
-<textarea id="editorText" rows="20" cols ="10" placeholder="내용을 입력해주세요"></textarea>
-</div>
-<div id="btn_wrap">
-	<button id="register_btn">등록하기</button>
-	<button id="update_btn">수정하기</button>
-</div>
+</section>
+
 
 <%@ include file="../footer.jsp" %>
 

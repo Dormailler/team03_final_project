@@ -7,6 +7,20 @@
 <link rel="stylesheet" href="/css/commWrite.css">
 <link rel="stylesheet" href="/css/bootsrtap.min.css">
 <title>게시글 작성</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+// 세션에 저장된 아이디 값을 가져와서 input 요소의 value에 설정
+document.addEventListener('DOMContentLoaded', function() {
+    var userIdInput = document.getElementById('user_id_input');
+    var userNickInput = document.getElementById('user_nick_input');
+    var sessionUserId = '<%= session.getAttribute("session_id") %>'; // JSP 코드로 세션 아이디 가져오기
+    var sessionUserNick = '<%= session.getAttribute("nick") %>'; // JSP 코드로 세션 닉네임 가져오기
+
+    userIdInput.value = sessionUserId;
+    userNickInput.value = sessionUserNick;
+});
+</script>
+
 </head>
 <body>
 	<div id="wrap">
@@ -25,7 +39,8 @@
 							</div>
 							<div class="form-group">
 								<label for="name" class="form-label">작성자</label>
-								<input type="text" name="writer" class="input-text">
+								<input type="text" name="writer" class="input-text" id="user_nick_input" value="" readonly>
+								<input type="hidden" name="user_id" id="user_id_input" value="">
 							</div>
 							<div class="form-group">
 								<label for="content" class="form-label">내용</label>

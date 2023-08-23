@@ -33,6 +33,26 @@ var replyService = (function() {
 	}
 })();
 
+function confirmEdit(user_id) {
+    var sessionUserId = "${sessionScope.session_id}"; // 세션에 저장된 사용자 아이디
+    if (sessionUserId === user_id) {
+        return true; // 수정 허용
+    } else {
+        alert("본인이 작성한 게시글만 수정이 가능합니다.");
+        return false; // 수정 불허
+    }
+}
+
+function confirmDelete(user_id) {
+    var sessionUserId = "${sessionScope.session_id}"; // 세션에 저장된 사용자 아이디
+    if (sessionUserId === user_id) {
+        return confirm("정말로 삭제하시겠습니까?"); // 삭제 확인 얼럿 띄우기
+    } else {
+        alert("본인이 작성한 게시글만 삭제가 가능합니다.");
+        return false; // 삭제 불허
+    }
+}
+
 window.onload = function() {
 	var replyForm = document.querySelector("#reply-form");
 	var no = replyForm.querySelector("input[name='no']").value;
@@ -87,12 +107,14 @@ window.onload = function() {
 									</li>
 								</ul>
 								<div class="btn-box right-box">
-									<a href="/commModify?no=${commView.no }"><input type="button" value="수정" class="custom-btn"></a>
-									<a href="/commRemove?no=${commView.no }"><input type="button" value="삭제" class="custom-btn"></a>						
+									<a href="/commModify?no=${commView.no }" onclick="return confirmEdit('${commView.user_id }');">
+									<input type="button" value="수정" class="custom-btn"></a>
+									<a href="/commRemove?no=${commView.no }" onclick="return confirmDelete('${commView.user_id }');">
+									<input type="button" value="삭제" class="custom-btn"></a>						
 								</div>
 							</form>
 						</div>
-						<div class="reply-box">
+						<!-- <div class="reply-box">
 							<h3>댓글</h3>
 							<form id="reply-form">
 								<input type="hidden" name="no" value="<c:out value='${commView.no }'/>">
@@ -102,6 +124,26 @@ window.onload = function() {
 								<input type="submit" value="입력" id="reply-btn">
 							</form>
 						</div>
+						<div class="reply-list">
+						    <h3>댓글 목록</h3>
+						    <ul>
+						        <c:forEach var="comment" items="${comments}">
+						            <li>${comment.replier}님의 댓글: ${comment.replyText}</li>
+						        </c:forEach>
+						    </ul>
+						</div> -->
+						<!-- <div class="commentWrap">
+						    <div>
+						        <c:forEach var="comment" items="${commentList}">
+						            <div>
+						            	<p>${comment.cno }</p>
+						                <p>${comment.name}</p>
+						                <p>${comment.date}</p>
+						                <p>${comment.comment}</p>
+						            </div>
+						        </c:forEach>
+						    </div>
+						</div> -->
 						<div class="move-box">
 							<ul>
 								<c:if test="${prev != null }">

@@ -41,8 +41,15 @@ public class ShareBoardService {
 		return dao.getComment(share_id);
 	}
 	
-	public int writeShareBoard(String user_id) {
-		return dao.writeShareBoard(user_id);
+	public int writeShareBoard(ShareBoardDTO dto) {
+		return dao.writeShareBoard(dto);
 	}
 	
+	public int deleteShareBoard(int share_id) {
+		return dao.deleteShareBoard(share_id);
+	}
+	
+	public int sharedConfirm(int share_id) {
+		return dao.sharedConfirm(share_id);
+	}
 }
