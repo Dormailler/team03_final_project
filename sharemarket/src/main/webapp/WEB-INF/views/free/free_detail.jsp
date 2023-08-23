@@ -292,7 +292,13 @@ $(document).ready(function(){
 	$('h1 span').on('click',function(){
 		location.reload();
 	});
-	
+	$('#message').on('click',function(e){
+		if("${session_id}" == ""){
+			e.preventDefault();
+			alert("로그인 후 이용가능합니다.");
+			location.href = "/login";
+		}
+	});
 });
 </script>
 
@@ -310,7 +316,7 @@ $(document).ready(function(){
 			</tr>
 			<tr>
 
-				<td><h4>닉네임&nbsp;&nbsp;&nbsp; | ${dto.user_id }</h4></td>
+				<td><h4>닉네임&nbsp;&nbsp;&nbsp; | ${dto.name }</h4></td>
 			</tr>
 			<tr>
 				
@@ -347,7 +353,7 @@ $(document).ready(function(){
 	</div>
 	<div id="img"><img referrerpolicy="no-referrer" src="/save/${dto.img }" onerror="this.src='${dto.img}';"/></div>
 	<div id="content_box">${dto.content }</div>
-		<div id="message"><button>메시지 보내기</button></div>
+		<div id="message"><a href="/sendMessage?send=${dto.user_id }"><button>메시지 보내기</button></a></div>
 		<div id="btn_wrap">
 			<button id="delete_btn">삭제</button>
 			<button id="update_btn">수정</button>
