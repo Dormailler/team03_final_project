@@ -81,7 +81,7 @@ $(document).ready(function(){
 		<tr>
 			<c:forEach items="${freelist}" var="dto" begin="0" end="3">
 				<td>
-					<a href="free/${dto.share_id}"><img referrerpolicy="no-referrer" src="/User/kdt/upload/${dto.img}" alt="상품이미지" class="img" onerror="this.src='${dto.img}';"/></a>
+					<a href="free/${dto.share_id}"><img referrerpolicy="no-referrer" src="/Users/kdt/upload/${dto.img}" alt="상품이미지" class="img" onerror="this.src='${dto.img}';"/></a>
 					<div class="detail_wrap">
 						<h4 class="title"><a href="free/${dto.share_id}">${dto.title}</a></h4>
 	                    <h6><span class="user">${dto.name}</span></h6>
@@ -97,7 +97,7 @@ $(document).ready(function(){
 		<tr>
 			<c:forEach items="${freelist}" var="dto" begin="4" end="7">
 				<td>
-					<a href="free/${dto.share_id}"><img referrerpolicy="no-referrer" src="/User/kdt/upload/${dto.img}" alt="상품이미지" class="img" onerror="this.src='${dto.img}';" /></a>
+					<a href="free/${dto.share_id}"><img referrerpolicy="no-referrer" src="/Users/kdt/upload/${dto.img}" alt="상품이미지" class="img" onerror="this.src='${dto.img}';" /></a>
 					<div class="detail_wrap">
 						<h4 class="title"><a href="free/${dto.share_id}">${dto.title}</a></h4>
 	                    <h6><span class="user">${dto.name}</span></h6>
