@@ -44,7 +44,7 @@
     				<title>Placeholder</title>
     <rect width="100%" height="100%" fill="#55595c"/>
     <!-- 텍스트를 가운데로 정렬 -->
-    <text x="50%" y="50%" fill="#eceeef" dy=".3em" text-anchor="middle" dominant-baseline="middle">공유게시판</text>
+    <text x="50%" y="50%" fill="#eceeef" dy=".3em" text-anchor="middle" dominant-baseline="middle">공유 게시판</text>
 </svg>
                     <div class="card-body">
                         <p class="card-text">공유 게시판</p>
