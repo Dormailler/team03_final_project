@@ -33,7 +33,7 @@
 		update freeboard set is_shared = true where share_id = #{share_id};
 	</update> 
 	<select id="getName" parameterType="String">
-		select name from user_table where user_id = #{user_id};
+		select nick from user_table where user_id = #{user_id};
 	</select>
 </mapper>
 
