@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/css/shareBoard/shareBoardList.css" />
-<title>빌려주세요</title>
+<title>공유 게시판</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
@@ -17,7 +17,7 @@
 	<div id="layout">
 		<div class="list">
 			<main>
-			<p id="boardName">빌려주세요</p>
+			<p id="boardName">공유 게시판</p>
 			
 			<div class="categoryWrap">
 		        <div class="category">
@@ -46,9 +46,6 @@
 		        </div>
 		        	        		        
 				<div class="searchBox">
-					<button id="searchBtn">
-						<img src="/img/Vector.png" alt="검색">
-					</button>
 					<c:choose>
 						<c:when test="${param.keyword == '' || param.keyword eq null}">
 							<input type="text" id="keyword" placeholder="제목검색">
@@ -57,6 +54,9 @@
 							<input type="text" id="keyword" value="${param.keyword}" />
 						</c:otherwise>
 					</c:choose>
+					<button id="searchBtn">
+						<img src="/img/Vector.png" alt="검색">
+					</button>
 				</div>
 			</div>
 			
@@ -65,6 +65,7 @@
 				<table class="boardList">
 					<tr>
 						<td>번호</td>
+						<td>공유</td>
 						<td>작성자</td>
 						<td>분류</td>
 						<td>상품명</td>
@@ -73,7 +74,6 @@
 						<td>작성일</td>
 						<td>금액</td>
 						<td>위치</td>
-						<td>조회수</td>
 					</tr>
 					
 					<c:if test="${empty response.list}">
@@ -89,6 +89,7 @@
 					<c:forEach var="boardList" items="${response.list}">
 							<tr>
 								<td><a href="/sharedetail?share_id=${boardList.share_id}" style="text-decoration: none; color: inherit;">${boardList.share_id}</a></td>
+								<td>${boardList.type}</td>
 								<td>${boardList.user_id}</td>
 								<td>${boardList.category}</td>
 								<td>${boardList.item}</td>
@@ -106,7 +107,6 @@
 								<td>${boardList.date}</td>
 								<td>${boardList.price}원</td>
 								<td>${boardList.location}</td>
-								<td>${boardList.view_cnt}</td>
 							</tr>	
 					</c:forEach>
 				</table>
@@ -233,6 +233,7 @@
 		}
 		location.href = location.pathname + '?' + new URLSearchParams(queryparamsPage).toString();
 	});
+
 </script>	
 
 

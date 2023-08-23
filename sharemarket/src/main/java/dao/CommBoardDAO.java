@@ -1,9 +1,11 @@
 package dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import commBoard.CommCriteria;
 import dto.CommBoardDTO;
+import dto.ReplyDTO;
 
 public interface CommBoardDAO {
 	//게시글 작성
@@ -29,4 +31,7 @@ public interface CommBoardDAO {
 	
 	//다음 게시글 보기
 	public CommBoardDTO nextBoard(int no);
+	
+	//댓글
+	//List<ReplyDTO> getComment(int no);
 }

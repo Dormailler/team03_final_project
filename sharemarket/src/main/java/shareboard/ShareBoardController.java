@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -22,7 +23,6 @@ public class ShareBoardController {
 	ShareBoardService service;
 	
 	ModelAndView mv = new ModelAndView();
-	ShareBoardDTO dto = new ShareBoardDTO();
 	
 	@GetMapping("/shareboardlist")
 	public ModelAndView shareBoard(HttpSession session, @ModelAttribute SearchDTO searchdto, HttpServletRequest request) {
@@ -50,13 +50,24 @@ public class ShareBoardController {
 		return "/shareBoard/shareBoardWrite";
 	}
 	
-    @PostMapping("/boardwrite")
-    @ResponseBody
-    public String shareBoardWrite(HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        String user_id = (String) session.getAttribute("user_id");
-        
-        int result = service.writeShareBoard(user_id);
-        return "{\"result\":\"" + result + "\"}";
-    }
+	@PostMapping("/shareboardwrite")
+	@ResponseBody
+	public String shareBoardWrite(ShareBoardDTO dto) {
+	    int result = service.writeShareBoard(dto);
+	    return "{\"result\":\"success\":\"" + result +"\"}";
+	}
+	
+	@PostMapping("/deleteshareboard")
+	@ResponseBody
+	public String deleteShareBoard(@RequestParam("share_id") int share_id) {
+		int result = service.deleteShareBoard(share_id);
+		return "{\"result\":\"" + result + "\"}";
+	}
+	
+	@PostMapping("/sharedconfirm")
+	@ResponseBody
+	public String sharedConfirm(@RequestParam("share_id") int share_id) {
+		int result = service.sharedConfirm(share_id);
+		return "{\"result\":\"" + result + "\"}";
+	}
 }

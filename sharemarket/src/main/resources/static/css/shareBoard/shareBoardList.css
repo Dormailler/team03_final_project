@@ -1,39 +1,13 @@
 @charset "UTF-8";
 
-:root {
-  --light-main: #ffb100;
-  --light-sub: #fbc252;
-  --light-point: #8a6f4e;
-  --light-stroke: #ded4c7;
-  --light-text: #1f1f1f;
-  --dark-main: #3c4245;
-  --dark-sub: #5f6769;
-  --dark-point: #ffd369;
-  --dark-stroke: #eeeeee;
-  --dark-text: #ffffff;
-  --gray1: #333333;
-  --gray2: #4f4f4f;
-  --gray3: #828282;
-  --gray4: #bdbdbd;
-  --gray5: #e0e0e0;
-  --white: #ffffff;
-  --heading34: normal bold 34px 'Noto Sans KR';
-  --heading24: normal bold 24px 'Noto Sans KR';
-  --heading18: normal bold 18px 'Noto Sans KR';
-  --body16: normal normal 16px 'Noto Sans KR';
-  --body14: normal normal 14px 'Noto Sans KR';
-  --button16: normal bold 16px 'Noto Sans KR';
-  --button14: normal bold 14px 'Noto Sans KR';
-  --button12: normal bold 12px 'Noto Sans KR';
-  --caption14: normal normal 14px 'Noto Sans KR';
-  --caption12: normal normal 12px 'Noto Sans KR';
-  --highlight16: normal bold 16px 'Noto Sans KR';
-  --highlight14: normal bold 14px 'Noto Sans KR';
-  --shadow100: 0px 4px 4px 0px rgba(167, 176, 192, 0.16);
-  --shadow200: 3px 5px 8px 0px rgba(167, 176, 192, 0.32);
+main {
+  width: 70%;
+  margin: 0 auto;	
+  padding: 20px;
+  border: 1px solid #ddd;
+  background-color: white;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);  
 }
-
-
 #layout {
   width: 1300px;
   height: auto;
@@ -46,44 +20,49 @@
   font-weight: bold;
 }
 .categoryWrap {
-  margin-left: 155px;
   display: flex;
   > div {
   	  margin-right: 5px;
   }  
   > div a {
-	  background-color: white;
-	  border: 1px solid #1B5DDE;
-	  border-radius: 10px;
-	  padding: 5px 10px;
+	  background-color: #007bff;
 	  text-decoration: none;
+	  color: white;
+	  border: none;
+	  height: 40px;
+	  padding: 10px 10px;
+	  border-radius: 4px;
+	  cursor: pointer;
+	  transition: background-color 0.3s ease;
   }
   > div a:hover {
-	  background-color: #0d6efd;
-	  color: white;
+	  background-color: white;
+	  color: black;
   }
-  .searchBox {
-  	  justify-content: end;
-  }
+}
+.searchBox {
+  margin-left: 296px;
 }
 .writingBtnWrap {
   float: right;
-  margin-right: 155px;
 	  > button {
-	  background-color: white;
-	  border: 1px solid #1B5DDE;
-	  border-radius: 10px;
-	  padding: 5px 10px;
+		  background-color: #007bff;
+		  color: white;
+		  border: none;
+		  height: 40px;
+		  padding: 0 20px;
+		  border-radius: 4px;
+		  cursor: pointer;
+		  transition: background-color 0.3s ease;
 	}
 
 	  > button:hover {
-	  background-color: #0d6efd;
-	  color: white;
+ 		 background-color: #0056b3;
 	}
 }
 table {
   min-width: calc(100% - 250px - 60px);
-  width: 70%;
+  width: 100%;
   margin: 20px auto;
 }
 table thead {
@@ -94,14 +73,15 @@ table tbody {
   text-align: center;
 }
 tr:first-child {
+  background-color: #f2f2f2;	
   font-weight: bolder;
-  border-bottom: 2px solid #1B5DDE;
+  border-bottom: 1px solid #ddd;
 }
 tr:last-child {
-  border-bottom: 2px solid #1B5DDE;
+  border-bottom: 1px solid #ddd;
 }
 table tbody tr{
-  border-bottom: 1px solid #1B5DDE;
+  border-bottom: 1px solid #ddd;
 }
 table tbody td {
   height: 45px;
@@ -142,18 +122,17 @@ table tbody td:last-of-type {
 #pagination .nextArrow {
 	height: 8px;
 	width: 8px;
-	border: solid var(--light-point);
+	border: solid #1B5DDE;
 	border-width: 2px 2px 0 0;
 }
 
 .pageNumber {
-	font: var(--body14);
-	margin-right: 10px;
-	border-radius: 50% !important;
-}
-
-.pageNumber.active {
-	background-color: var(--light-sub);
+  margin: 0 5px;	
+  text-decoration: none;
+  color: #333;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .pageNumber:last-of-type {
@@ -161,9 +140,9 @@ table tbody td:last-of-type {
 }
 
 .pagefirst, .prev {
-	margin-right: 10px;
-	background-color: var(--white);
-	border: 1px solid var(--light-stroke);
+	margin-right: 5px;
+	background-color: white;
+	border: 1px solid #1B5DDE;
 }
 
 .pagefirst {
@@ -176,8 +155,8 @@ table tbody td:last-of-type {
 }
 
 .pagelast, .next {
-	margin-right: 3px;
-	border: 1px solid var(--light-stroke);
+  margin-right: 3px;
+  font-weight: bold;
 }
 
 .nextArrow {
@@ -186,12 +165,13 @@ table tbody td:last-of-type {
 }
 
 #pagination *:hover {
-	background-color: var(--light-sub);
+  background-color: #0056b3;
+  color: #fff;
+  transition: background-color 0.3s ease;
 }
 
 #pagination *:hover .prevArrow, 
 #pagination *:hover .nextArrow {
-	border: solid var(--white);
-	border-width: 2px 2px 0 0;
-	background-color: transparent;
+  color: #fff;
+  transition: background-color 0.3s ease;
 }
