@@ -91,6 +91,11 @@ const share_id = urlParams.get('share_id');
 	</div>
 
 <script>
+//메시지 보내기 버튼
+document.getElementById("contact").addEventListener("click", function() {
+	  window.location.href = "/sendMessage";
+	});
+
 //마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
 var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 

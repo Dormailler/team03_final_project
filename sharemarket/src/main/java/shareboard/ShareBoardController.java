@@ -26,7 +26,6 @@ public class ShareBoardController {
 	
 	@GetMapping("/shareboardlist")
 	public ModelAndView shareBoard(HttpSession session, @ModelAttribute SearchDTO searchdto, HttpServletRequest request) {
-		session.setAttribute("user_id", "team3");
 		searchdto.setRecordSize(10);
 		
 		PagingResponse<ShareBoardDTO> list = service.getAllBoardPaging(searchdto);
