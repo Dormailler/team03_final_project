@@ -37,7 +37,7 @@
 	<!-- pagination -->
 	<select id="getAllBoardPaging" resultType="shareboarddto" parameterType="pagination.SearchDTO">
 		SELECT *
-		FROM   `shareBoard`
+		FROM   `shareboard`
 		<where>
 			<choose>
 				<when test="searchType1 != null and searchType1 != ''">
@@ -71,7 +71,7 @@
 	
 	<select id="getCount" resultType="int" parameterType="pagination.SearchDTO">
 		SELECT COUNT(*)
-		FROM   `shareBoard`
+		FROM   `shareboard`
 		<where>
 			<choose>
 				<when test="searchType1 != null and searchType1 != ''">
