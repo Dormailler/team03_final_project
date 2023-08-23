@@ -5,7 +5,6 @@ import java.util.List;
 
 import commBoard.CommCriteria;
 import dto.CommBoardDTO;
-import dto.ReplyDTO;
 
 public interface CommBoardDAO {
 	//게시글 작성

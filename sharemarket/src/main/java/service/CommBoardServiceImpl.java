@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import commBoard.CommCriteria;
 import dao.CommBoardDAO;
 import dto.CommBoardDTO;
-import dto.ReplyDTO;
 
 @Service
 public class CommBoardServiceImpl implements CommBoardService {
