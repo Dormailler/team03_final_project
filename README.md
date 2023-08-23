@@ -125,7 +125,7 @@
 - 버튼 클릭 시 db에서 업데이트
 
 
-### 공유 게시판
+### 공유 게시판 -> [주요기능 (공유 게시판)](https://github.com/Dormailler/team03_final_project/wiki/%EA%B3%B5%EC%9C%A0-%EA%B2%8C%EC%8B%9C%ED%8C%90)
 ● 게시글 목록
 - 공유 게시글 카테고리별 정렬
 - 공유 게시글 검색기능
