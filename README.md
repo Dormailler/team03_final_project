@@ -52,7 +52,7 @@
 - 회원 탈퇴 버튼을 통해 DB에서 회원 정보 삭제 및 이를 통한 탈퇴
 
 
-### 커뮤니티 게시판 -> [주요 기능 (커뮤니티 게시판)](https://github.com/Dormailler/team03_final_project/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5(%EC%BB%A4%EB%AE%A4%EB%8B%88%ED%8B%B0-%EA%B2%8C%EC%8B%9C%ED%8C%90))
+### 커뮤니티 게시판 -> [주요 기능 (커뮤니티 게시판)](https://github.com/Dormailler/team03_final_project/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-(%EC%BB%A4%EB%AE%A4%EB%8B%88%ED%8B%B0-%EA%B2%8C%EC%8B%9C%ED%8C%90))
 
 ● 게시글 조회(목록)
 - DB에 저장된 게시글 데이터를 가져와 목록에 표시
