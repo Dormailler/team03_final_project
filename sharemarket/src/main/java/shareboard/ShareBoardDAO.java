@@ -15,5 +15,7 @@ public interface ShareBoardDAO {
 	int getCount(SearchDTO dto);
 	ShareBoardDTO getBoardDetail(int share_id);
 	List<CommentDTO> getComment(int share_id);
-	int writeShareBoard(String user_id);
+	int writeShareBoard(ShareBoardDTO dto);
+	int deleteShareBoard(int share_id);
+	int sharedConfirm(int share_id);
 }
