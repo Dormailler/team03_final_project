@@ -351,7 +351,7 @@ $(document).ready(function(){
 			    </div>
 		</div>
 	</div>
-	<div id="img"><img referrerpolicy="no-referrer" src="/save/${dto.img }" onerror="this.src='${dto.img}';"/></div>
+	<div id="img"><img referrerpolicy="no-referrer" src="/User/kdt/upload/${dto.img }" onerror="this.src='${dto.img}';"/></div>
 	<div id="content_box">${dto.content }</div>
 		<div id="message"><a href="/sendMessage?send=${dto.user_id }"><button>메시지 보내기</button></a></div>
 		<div id="btn_wrap">
