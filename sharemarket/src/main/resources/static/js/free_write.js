@@ -32,8 +32,10 @@ $(document).ready(function(){
 		  
 	      const li = document.createElement('li');
 	      const img = document.createElement('img');
+	      
 	      img.setAttribute('src', e.target.result);
 	      img.setAttribute('data-file', file.name);
+	      
 	      li.appendChild(img);
 
 	      return li;
@@ -52,10 +54,20 @@ $(document).ready(function(){
     $('.location').on('click',function(){
     	$('#modal_wrap').show();
     });
+
     
     if(window.location.href.substr(-5) == "freew"){
     	$('#update_btn').hide();
     }else{
     	$('#register_btn').hide();
     }
+    $('.close').on('click',function(){
+		$('#modal_wrap').hide();
+	})
+	$('#cancel_btn').on('click',function(){
+		location.href = "/free";
+	})
+	$('h1 span').on('click',function(){
+		location.reload();
+	});
 });

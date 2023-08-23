@@ -5,10 +5,10 @@
 
 <!-- 게시글 작성 -->
 <insert id="commWrite" parameterType="CommBoardDTO">
-	insert into communityBoard(title, content, writer)
-	values (#{title}, #{content}, #{writer})
+	insert into communityBoard(title, content, user_id, writer)
+	values (#{title}, #{content}, #{user_id}, #{writer})
 </insert>
-	
+
 <!-- 검색 기능 -->
 <sql id="search">
 	<trim prefix="where ">
@@ -76,4 +76,14 @@
 		select no, title from communityBoard where no > #{no} order by no limit 1;
 		]]>
 </select>
+
+<!-- 게시글 댓글 불러오기 -->
+<!-- <select id="getComment" parameterType="int" resultType="ReplyDTO">
+	SELECT r.*, u.*
+	FROM `reply` r 
+	JOIN `user_table` u ON r.`user_id` = u.`user_id` 
+	WHERE r.`cno` = #{no}
+	ORDER BY r.`date` DESC;
+</select> -->
+
 </mapper>

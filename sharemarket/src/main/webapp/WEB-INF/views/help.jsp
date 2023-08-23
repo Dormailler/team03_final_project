@@ -33,7 +33,7 @@
 						</div>
 					</div>
 					<div id="help_contents">
-						<textarea id="summernote" name="h_content"></textarea>
+						<textarea name="h_content"></textarea>
 					</div>
 					<div id="help_Btn">
 						<input type="submit" value="문의하기">

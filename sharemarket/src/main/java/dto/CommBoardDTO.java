@@ -7,6 +7,7 @@ public class CommBoardDTO {
 	private String title;
 	private String content;
 	private String writer;
+	private String user_id;
 	private Date regdate;
 	private Date updatedate;
 	private int viewcnt;
@@ -36,6 +37,12 @@ public class CommBoardDTO {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
+	public String getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
 	public Date getRegdate() {
 		return regdate;
 	}
@@ -60,11 +67,5 @@ public class CommBoardDTO {
 	}
 	public void setReplyCnt(int replycnt) {
 		this.replycnt = replycnt;
-	}
-	@Override
-	public String toString() {
-		return "CommBoardDTO [no=" + no + ", title=" + title + ", content=" + content + ", writer=" + writer
-				+ ", regdate=" + regdate + ", updatedate=" + updatedate + ", viewcnt=" + viewcnt + ", replycnt="
-				+ replycnt + "]";
 	}
 }
