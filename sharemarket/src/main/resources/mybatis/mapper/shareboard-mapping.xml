@@ -5,17 +5,17 @@
 	
 	<!-- 게시글 목록 불러오기 -->
 	<select id="getShareBoardList" parameterType="shareboarddto">
-		SELECT * FROM `shareboard`;
+		SELECT * FROM `shareBoard`;
 	</select>
 
 	<!-- 게시글 불러오기 -->
 	<select id="getBoardDetail" resultType="shareboarddto" parameterType="int">
-		SELECT * FROM `shareboard` WHERE `share_id` = #{share_id};
+		SELECT * FROM `shareBoard` WHERE `share_id` = #{share_id};
 	</select>
 	
 	<!-- 게시글 삭제 -->
 	<delete id="deleteShareBoard" parameterType="int">
-		DELETE FROM `shareboard` WHERE `share_id` = #{share_id};
+		DELETE FROM `shareBoard` WHERE `share_id` = #{share_id};
 	</delete>
 	
 	<!-- 게시글 댓글 불러오기 -->
@@ -29,7 +29,7 @@
 	
 	<!-- 거래완료 -->
 	<update id="sharedConfirm" parameterType="int">
-		UPDATE `shareboard`
+		UPDATE `shareBoard`
 		SET    `is_shared` = true
 		WHERE  `share_id` = #{share_id};
 	</update>
@@ -103,7 +103,7 @@
 	
 	<!-- 게시글 작성하기 -->
 	<insert id="writeShareBoard" parameterType="shareboarddto">
-		INSERT INTO `shareboard` 
+		INSERT INTO `shareBoard` 
 			(`user_id`, `title`, `type`, `category`, `location`, `img`, `item`, `is_shared`, `date`, `price`)
 		VALUES 
 			(#{user_id}, #{title}, #{type}, #{category}, #{location}, #{img}, #{item}, false, now(), #{price});	

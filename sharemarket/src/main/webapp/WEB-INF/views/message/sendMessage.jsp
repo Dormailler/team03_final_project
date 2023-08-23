@@ -2,6 +2,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<script src="js/jquery-3.6.4.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		function getQueryParam(param) {
+		    let searchParams = new URLSearchParams(window.location.search);
+		    return searchParams.get(param);
+		}
+
+		let sendValue = getQueryParam("send");
+		if (sendValue) {
+		    $('#recv_nick').val(sendValue);
+		}
+	});
+	</script>
     <title>Send Message</title>
     <style>
         body {
