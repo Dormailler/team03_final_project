@@ -10,6 +10,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +31,7 @@ public class FreeBoardController {
 	@Qualifier("freeservice")
 	freeBoardService service;
 	
-	@RequestMapping("/free")
+	@GetMapping("/free")
 	public ModelAndView freeboard(@RequestParam(value="page", required=false, defaultValue="1") int page, 
 									@RequestParam(value="category", required=false, defaultValue="fashion") String category,
 									@RequestParam(value="select", required=false, defaultValue="title") String select,
