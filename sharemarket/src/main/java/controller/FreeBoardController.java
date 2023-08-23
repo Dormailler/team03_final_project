@@ -35,12 +35,12 @@ public class FreeBoardController {
 									@RequestParam(value="category", required=false, defaultValue="fashion") String category,
 									@RequestParam(value="select", required=false, defaultValue="title") String select,
 									@RequestParam(value="text", required=false, defaultValue="") String text) {
-		int totalBoard = service.getTotalsearchFreeBoard(category,text,select);
 		
-		//page번호 해당 게시물 8개 리스트 조회 
+		// 페이징 처리 위한 초기화
+		int totalBoard = service.getTotalsearchFreeBoard(category,text,select);  
 		int limitcount = 8;
 		int limitindex = (page-1)*limitcount;
-
+		
 		HashMap<String, String> paramap = new HashMap<>();
 		paramap.put("start", Integer.toString(limitindex));
 		paramap.put("end", Integer.toString(limitcount));
@@ -78,7 +78,6 @@ public class FreeBoardController {
 		mv.addObject("dto",dto);
 		mv.setViewName("/free/free_write");
 		return mv;
-		
 	}
 	
 	@PostMapping("/upload")

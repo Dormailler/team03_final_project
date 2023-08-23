@@ -14,6 +14,8 @@ $(document).ready(function(){
 
 	if("${session_id}" != "${dto.user_id }"){
 		$('#btn_wrap').hide();
+	}else{
+		$('#message').hide();
 	}
 	var markers = [];
 
@@ -286,7 +288,10 @@ $(document).ready(function(){
 			      }
 			});
 		}else{ return; }
-	})
+	});
+	$('h1 span').on('click',function(){
+		location.reload();
+	});
 	
 });
 </script>
@@ -295,26 +300,34 @@ $(document).ready(function(){
 <body>
 <div id="full_wrap">
 <%@ include file="../header.jsp" %>
-<h1 id="top">무료나눔</h1>
+<h1 id="top"><span>무료나눔</span></h1>
 <div id="contents_wrap">
 	<div id="detail_wrap">
 		<table>
 			<tr>
-				<td><h4 id="user">작성자</h4></td>
-				<td><h4>${dto.user_id }</h4></td>
+				
+				<td><h3 style="font-weight: bold;">${dto.title }</h3></td>
 			</tr>
 			<tr>
-				<td><h4>작성일</h4></td>
-				<td><h4>${dto.date }</h4></td>
+
+				<td><h4>닉네임&nbsp;&nbsp;&nbsp; | ${dto.user_id }</h4></td>
 			</tr>
 			<tr>
-				<td><h4>분류</h4></td>
+				
+				<td><h4>희망장소 | ${dto.location }</h4></td>
+			</tr>
+			<%-- <tr>
+
 				<td><h4 class="category">${dto.category }</h4></td>
+			</tr>  --%>
+			<tr>
+				<td><h4>${dto.date }</h4></td>
+				
 			</tr>
 		</table>
 	</div>
 	<div id="location">
-		<h3>위치 ${dto.location }</h3> 
+		
 		<div class="map_wrap" style="width:100%;">
 		    	<div id="map" style="width:100%;height:335px;position:relative;overflow:hidden;"></div>
 		    	<div id="menu_wrap" class="bg_white" style="display:none;">
@@ -332,8 +345,9 @@ $(document).ready(function(){
 			    </div>
 		</div>
 	</div>
-	<div id="img"><h3>사진</h3> <img referrerpolicy="no-referrer" src="/save/${dto.img }" onerror="this.src='${dto.img}';"/></div>
+	<div id="img"><img referrerpolicy="no-referrer" src="/save/${dto.img }" onerror="this.src='${dto.img}';"/></div>
 	<div id="content_box">${dto.content }</div>
+		<div id="message"><button>메시지 보내기</button></div>
 		<div id="btn_wrap">
 			<button id="delete_btn">삭제</button>
 			<button id="update_btn">수정</button>
