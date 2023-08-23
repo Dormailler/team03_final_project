@@ -35,8 +35,7 @@ $(document).ready(function() {
 
     <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
       <li><a href="/" class="nav-link px-2 link-secondary">Home</a></li>
-      <li><a href="/shareboardlist" class="nav-link px-2">빌려주세요</a></li>
-      <li><a href="#" class="nav-link px-2">빌려줍니다</a></li>
+      <li><a href="/shareboardlist" class="nav-link px-2">공유 게시판</a></li>
       <li><a href="/free" class="nav-link px-2">무료나눔</a></li>
       <li><a href="/commList" class="nav-link px-2">커뮤니티</a></li>
       <li><a href="/helplist" class="nav-link px-2">문의사항</a></li>
