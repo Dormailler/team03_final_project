@@ -14,6 +14,8 @@
 <script src='js/free.js'></script>
 <script>
 $(document).ready(function(){
+	console.log(window.location.pathname);
+				
 	var page = "#page" + "${page}";
 	$(page).css("color","#1B5DDE");
 	var category = ".${category}";
@@ -46,14 +48,15 @@ $(document).ready(function(){
 	     var fullDate = element.textContent;
 	     var trimmedDate = fullDate.substring(0, 11);
 	     element.textContent = trimmedDate;
-    	});
+    	});	
+	
 });
 </script>
 
 </head>
 <body>
 <%@ include file="../header.jsp" %>
-<h1 class="top">무료나눔</h1>
+<h1 class="top"><span>무료나눔</span></h1>
 <div id="search_wrap" action="/free_search">
 	<select id="search_select">
 		<option value="title">제목</option>
@@ -81,7 +84,7 @@ $(document).ready(function(){
 					<a href="free/${dto.share_id}"><img referrerpolicy="no-referrer" src="/save/${dto.img}" alt="상품이미지" class="img" onerror="this.src='${dto.img}';"/></a>
 					<div class="detail_wrap">
 						<h4 class="title"><a href="free/${dto.share_id}">${dto.title}</a></h4>
-	                    <h6><a href="" class="user">${dto.name}</a></h6>
+	                    <h6><span class="user">${dto.name}</span></h6>
 	                    <h6>${dto.location}</h6>
 	                    <h6 class="content"><span class="date">${dto.date}</span></h6> 
 	                    <c:if test="${dto.is_shared}">
@@ -97,7 +100,7 @@ $(document).ready(function(){
 					<a href="free/${dto.share_id}"><img referrerpolicy="no-referrer" src="/save/${dto.img}" alt="상품이미지" class="img" onerror="this.src='${dto.img}';" /></a>
 					<div class="detail_wrap">
 						<h4 class="title"><a href="free/${dto.share_id}">${dto.title}</a></h4>
-	                    <h6><a href="" class="user">${dto.name}</a></h6>
+	                    <h6><span class="user">${dto.name}</span></h6>
 	                    <h6>${dto.location}</h6>
 	                    <h6 class="content"><span class="date">${dto.date}</span></h6> 
 	                    <c:if test="${dto.is_shared}">

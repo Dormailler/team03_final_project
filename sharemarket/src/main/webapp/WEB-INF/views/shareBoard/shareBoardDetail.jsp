@@ -21,8 +21,8 @@ const share_id = urlParams.get('share_id');
 		<div class="boardDetail">
 			<main>
 			<div id="header">
-				<p id="boardName">빌려주세요</p>
-				<p>조회수 ${boardDetail.view_cnt}</p>
+				<p id="boardName">${boardDetail.type}</p>
+				<p id="boardTitle">제목 : ${boardDetail.title}</p>
 			</div>
 			
 			<div class="contents">
@@ -55,17 +55,22 @@ const share_id = urlParams.get('share_id');
 				<div class="location">
 					<p>${boardDetail.location}</p>
 				</div>
+				<!-- 
 				<div class="imgAside">
 					<p>사진</p>
 				</div>
 				<div class="img">
 					<p><img src="${boardDetail.img}" /></p>
 				</div>
+				 -->
 				<div class="text">
 					<div>${boardDetail.content}</div>
 				</div>
 				<div class="btnWrap">
-					<button>연락하기</button>
+					<button id="shared">거래완료</button>
+					<button id="contact">연락하기</button>
+					<button id="delete">삭제하기</button>
+					<button id="edit">수정하기</button>
 				</div>
 				<div class="commentWrap">
 					<div>
@@ -83,6 +88,62 @@ const share_id = urlParams.get('share_id');
 			</main>
 		</div>
 	</div>
+
+<script>
+$(document).ready(function() {
+	
+    var sessionUserId = '${sessionScope.user_id}';
+    var buttonUserId = '${boardDetail.user_id}';
+
+    // user_id가 일치할 경우 delete 버튼을 보이게 함
+    if (sessionUserId === buttonUserId) {
+        $("#delete").show();
+        $("#shared").show();
+        $("#edit").show();
+    } else {
+        $("#delete").hide();
+        $("#shared").hide();
+        $("#edit").hide();
+    }
+	
+	
+    $("#delete").on('click', function() {
+
+        $.ajax({
+            url: "/deleteshareboard",
+            type: "POST",
+            dataType: "json",
+            data: {
+                share_id: share_id
+            },
+            success: function(response) {
+				location.href = "/shareboardlist";
+            },
+            error: function(xhr, status, error) {
+                alert("오류 발생: " + error);
+            }
+        });
+    });
+    
+    $("#shared").on('click', function() {
+
+        $.ajax({
+            url: "/sharedconfirm",
+            type: "POST",
+            dataType: "json",
+            data: {
+                share_id: share_id
+            },
+            success: function(response) {
+				location.href = "/sharedetail?share_id=${boardDetail.share_id}";
+            },
+            error: function(xhr, status, error) {
+                alert("오류 발생: " + error);
+            }
+        });
+    });
+});
+</script>
 
 <jsp:include page="../footer.jsp"/>
 </body>
