@@ -7,18 +7,16 @@
 	<select id="getShareBoardList" parameterType="shareboarddto">
 		SELECT * FROM `shareboard`;
 	</select>
-	
-	<!-- 게시글 작성하기 -->
-	<insert id="writeShareBoard" parameterType="shareboarddto">
-		INSERT INTO `shareboard` 
-					(`user_id`, `title`, `category`, `location`, `item`, `is_shared`, `date`, `price`) 
-		VALUES		(#{user_id}, #{title}, #{category}, #{location}, #{item}, false, now(), #{price});			
-	</insert>
 
 	<!-- 게시글 불러오기 -->
 	<select id="getBoardDetail" resultType="shareboarddto" parameterType="int">
 		SELECT * FROM `shareboard` WHERE `share_id` = #{share_id};
 	</select>
+	
+	<!-- 게시글 삭제 -->
+	<delete id="deleteShareBoard" parameterType="int">
+		DELETE FROM `shareboard` WHERE `share_id` = #{share_id};
+	</delete>
 	
 	<!-- 게시글 댓글 불러오기 -->
 	<select id="getComment" parameterType="int">
@@ -28,6 +26,13 @@
 		WHERE c.`share_id` = #{share_id}
 		ORDER BY c.`date` DESC;
 	</select>
+	
+	<!-- 거래완료 -->
+	<update id="sharedConfirm" parameterType="int">
+		UPDATE `shareboard`
+		SET    `is_shared` = true
+		WHERE  `share_id` = #{share_id};
+	</update>
 	
 	<!-- pagination -->
 	<select id="getAllBoardPaging" resultType="shareboarddto" parameterType="pagination.SearchDTO">
@@ -60,7 +65,7 @@
 						AND `title` LIKE CONCAT('%', #{keyword}, '%')
 			</if>
 		</where>
-		ORDER BY `date` DESC
+		ORDER BY `share_id` DESC
 		LIMIT #{pagination.limitStart}, #{recordSize}
 	</select>
 	
@@ -96,4 +101,11 @@
 		</where>
 	</select>
 	
+	<!-- 게시글 작성하기 -->
+	<insert id="writeShareBoard" parameterType="shareboarddto">
+		INSERT INTO `shareboard` 
+			(`user_id`, `title`, `type`, `category`, `location`, `img`, `item`, `is_shared`, `date`, `price`)
+		VALUES 
+			(#{user_id}, #{title}, #{type}, #{category}, #{location}, #{img}, #{item}, false, now(), #{price});	
+	</insert>
 </mapper>

@@ -3,7 +3,7 @@ package shareboard;
 import java.sql.Date;
 
 public class ShareBoardDTO {
-	String user_id, title, category, item, location, img, content;
+	String user_id, title, category, item, location, img, content, name, type;
 	boolean is_shared, is_reported;
 	int share_id, view_cnt, price;
 	Date date;
@@ -84,6 +84,18 @@ public class ShareBoardDTO {
 	}
 	public void setDate(Date date) {
 		this.date = date;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 }
