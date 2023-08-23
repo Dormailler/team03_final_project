@@ -38,10 +38,24 @@ h1{
 	position: relative;
     float: left;
     margin-bottom:20px;
-    
+}
+tr td:first-child{
+	width:80px;
+	
+}
+tr td:first-child h4{
+	font-weight: 600;
+}
+tr:nth-child(2) td h4{
+	margin-top:20px;
+	font-weight:400;
+	margin-bottom:30px;
 }
 h1 span{
 	cursor:pointer;
+}
+.t_title{
+	font-weight: 1000;
 }
 #img{
 	margin-top:20px;

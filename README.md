@@ -28,7 +28,7 @@
  MySQL
 ### ● 프론트엔드
  HTML / CSS / JAVASCRIPT / jQuery / JSTL
-### ● 벡엔드
+### ● 백엔드
  STS4(Spring Boot) - MAVEN / JAVA / MyBatis
 ### ● api
 스마트에디터 api , 카카오맵 지도 api 
@@ -52,7 +52,7 @@
 - 회원 탈퇴 버튼을 통해 DB에서 회원 정보 삭제 및 이를 통한 탈퇴
 
 
-### 커뮤니티 게시판 -> [주요 기능 (커뮤니티 게시판)](https://github.com/Dormailler/team03_final_project/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5(%EC%BB%A4%EB%AE%A4%EB%8B%88%ED%8B%B0-%EA%B2%8C%EC%8B%9C%ED%8C%90))
+### 커뮤니티 게시판 -> [주요 기능 (커뮤니티 게시판)](https://github.com/Dormailler/team03_final_project/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-(%EC%BB%A4%EB%AE%A4%EB%8B%88%ED%8B%B0-%EA%B2%8C%EC%8B%9C%ED%8C%90))
 
 ● 게시글 조회(목록)
 - DB에 저장된 게시글 데이터를 가져와 목록에 표시
@@ -101,7 +101,7 @@
 ● 메시지 보내기
 - 상대 닉네임을 통해 메시지 보내기
 
-### 무료나눔 게시판 -> [주요 기능 (무료나눔 게시판)](https://github.com/Dormailler/team03_final_project/wiki/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A5(%EB%AC%B4%EB%A3%8C%EB%82%98%EB%88%94-%EA%B2%8C%EC%8B%9C%ED%8C%90))
+### 무료나눔 게시판 -> [주요 기능 (무료나눔 게시판)](https://github.com/Dormailler/team03_final_project/wiki/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A5-(%EB%AC%B4%EB%A3%8C%EB%82%98%EB%88%94-%EA%B2%8C%EC%8B%9C%ED%8C%90))
 
 ● 게시글 조회
 - DB에 저장된 게시글 데이터를 가져와 분류별로 목록에 표시
@@ -125,7 +125,7 @@
 - 버튼 클릭 시 db에서 업데이트
 
 
-### 공유 게시판
+### 공유 게시판 -> [주요기능 (공유 게시판)](https://github.com/Dormailler/team03_final_project/wiki/%EA%B3%B5%EC%9C%A0-%EA%B2%8C%EC%8B%9C%ED%8C%90)
 ● 게시글 목록
 - 공유 게시글 카테고리별 정렬
 - 공유 게시글 검색기능
@@ -133,7 +133,11 @@
 
 ● 게시글 조회
 - 기본 CRUD 기능
+- 카카오 지도 api로 지정된 장소정보 확인
+- 게시한 사진 보기
 - 네이버 스마트에디터가 적용된 내용 확인
 
 ● 게시글 작성
 - 네이버 스마트에디터 적용
+- 게시한 사진 미리보기
+- 카카오 지도 api로 만날 장소 지정

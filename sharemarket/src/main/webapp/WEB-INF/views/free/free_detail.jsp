@@ -299,6 +299,11 @@ $(document).ready(function(){
 			location.href = "/login";
 		}
 	});
+	var t = "${dto.date}";
+	var date = t.split(" ")[0];
+	var time = t.split(" ")[1];
+	$('#date').html(date);
+	$('#time').html(time);
 });
 </script>
 
@@ -310,27 +315,30 @@ $(document).ready(function(){
 <div id="contents_wrap">
 	<div id="detail_wrap">
 		<table>
-			<tr>
-				
-				<td><h3 style="font-weight: bold;">${dto.title }</h3></td>
+			<tr>		
+				<td colspan="2"><h2 class="t_title">${dto.title }</h2></td>
 			</tr>
 			<tr>
-
-				<td><h4>닉네임&nbsp;&nbsp;&nbsp; | ${dto.name }</h4></td>
+				<td colspan="2"><h4>${dto.date }</h4></td>
+			</tr>
+			
+			<tr>
+				<td><h4>이름</td>
+				<td><h4>${dto.name }</h4></td>
 			</tr>
 			<tr>
-				
-				<td><h4>희망장소 | ${dto.location }</h4></td>
+				<td><h4>장소</h4></td>
+				<td><h4>${dto.location }</h4></td>
 			</tr>
-			<%-- <tr>
-
+			<tr>
+				<td><h4>분류</h4></td>
 				<td><h4 class="category">${dto.category }</h4></td>
-			</tr>  --%>
-			<tr>
-				<td><h4>${dto.date }</h4></td>
-				
-			</tr>
+			</tr>  
+			
+			
 		</table>
+		
+		
 	</div>
 	<div id="location">
 		

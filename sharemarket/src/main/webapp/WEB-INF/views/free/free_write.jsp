@@ -402,7 +402,7 @@ $(document).ready(function(){
     }
     
    	$('#editorText').html(`${dto.content}`.replace(/\n/g, '<br>'));
-
+   	
     
     
     $('#update_btn').on('click',function(e){
@@ -494,13 +494,21 @@ $(document).ready(function(){
 		        console.log(error);
 		      }
 		});
+		let currentPath = window.location.pathname;
+		let match = currentPath.match(/\/(\d+)$/);
+		if (match) {
+		    location.href = "/free/" + match[1];
+		    setTimeout(() => {
+		        location.reload();
+		    }, 500);
+		} 
 		
-		location.href = "/free";
+		/* location.href = "/free"; */
 		setTimeout(() => {
 			location.reload();
 		}, 100);
 	});
-	
+    
 });
 </script>
 </head>
