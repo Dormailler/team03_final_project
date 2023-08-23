@@ -1,9 +1,11 @@
 package service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import commBoard.CommCriteria;
 import dto.CommBoardDTO;
+import dto.ReplyDTO;
 
 public interface CommBoardService {
 
@@ -30,4 +32,7 @@ public interface CommBoardService {
 	
 	//다음 게시글 보기
 	public CommBoardDTO nextBoard(int no);
+	
+	//댓글
+	//List<ReplyDTO> getComment(int no);
 }
