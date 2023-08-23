@@ -16,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 import commBoard.CommCriteria;
 import commBoard.CommPagination;
 import dto.CommBoardDTO;
-import dto.ReplyDTO;
 import jakarta.servlet.http.HttpSession;
 import service.CommBoardService;
 
