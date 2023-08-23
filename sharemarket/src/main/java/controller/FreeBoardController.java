@@ -87,7 +87,7 @@ public class FreeBoardController {
         for (MultipartFile file : files) {
             if (!file.isEmpty()) {
                 try {
-                	File savelocation = new File("src/main/resources/static/save/");
+                	File savelocation = new File("/Users/kdt/upload/");
                 	File saveFile = new File(savelocation.getAbsolutePath()+ "/" + file.getOriginalFilename());
    
                 	if (!saveFile.exists()) { 
