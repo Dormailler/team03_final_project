@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 main {
-  width: 70%;
+  width: 80%;
   margin: 0 auto;	
   padding: 20px;
   border: 1px solid #ddd;
@@ -41,7 +41,7 @@ main {
   }
 }
 .searchBox {
-  margin-left: 296px;
+  margin-left: 426px;
 }
 .writingBtnWrap {
   float: right;
