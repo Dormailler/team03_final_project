@@ -1,6 +1,7 @@
 package service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import commBoard.CommCriteria;
 import dao.CommBoardDAO;
 import dto.CommBoardDTO;
+import dto.ReplyDTO;
 
 @Service
 public class CommBoardServiceImpl implements CommBoardService {
@@ -57,6 +59,11 @@ public class CommBoardServiceImpl implements CommBoardService {
 	public CommBoardDTO nextBoard(int no) {
 		return dao.nextBoard(no);
 	}
+	
+	//댓글
+	/*public List<ReplyDTO> getComment(int no){
+		return dao.getComment(no);
+	}*/
 }
 
 
