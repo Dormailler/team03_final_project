@@ -28,7 +28,7 @@
  MySQL
 ### ● 프론트엔드
  HTML / CSS / JAVASCRIPT / jQuery / JSTL
-### ● 벡엔드
+### ● 백엔드
  STS4(Spring Boot) - MAVEN / JAVA / MyBatis
 ### ● api
 스마트에디터 api , 카카오맵 지도 api 
