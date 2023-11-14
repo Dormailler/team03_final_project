@@ -101,7 +101,7 @@
 ● 메시지 보내기
 - 상대 닉네임을 통해 메시지 보내기
 
-### 무료나눔 게시판 -> [주요 기능 (무료나눔 게시판)](https://github.com/Dormailler/team03_final_project/wiki/%EC%A3%BC%EC%9A%94%EA%B8%B0%EB%8A%A5-(%EB%AC%B4%EB%A3%8C%EB%82%98%EB%88%94-%EA%B2%8C%EC%8B%9C%ED%8C%90))
+### 무료나눔 게시판 -> [주요 기능 (무료나눔 게시판)](https://github.com/Dormailler/team03_final_project/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-(%EB%AC%B4%EB%A3%8C%EB%82%98%EB%88%94-%EA%B2%8C%EC%8B%9C%ED%8C%90))
 
 ● 게시글 조회
 - DB에 저장된 게시글 데이터를 가져와 분류별로 목록에 표시
