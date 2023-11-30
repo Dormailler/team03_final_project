@@ -19,7 +19,7 @@
 
 팀원1 : 서상훈 - 공유 게시판
 
-팀원2 : 권도현 - 무료나눔 게시판
+팀원2 : 권도현 - [무료나눔 게시판](https://github.com/Dormailler/team03_final_project/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-(%EB%AC%B4%EB%A3%8C%EB%82%98%EB%88%94-%EA%B2%8C%EC%8B%9C%ED%8C%90))
 
 팀원3 : 김효빈 - 커뮤니티 게시판, 문의사항 게시판
 
